@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sabina AI — Саналы Коммуникация ЖИ Көмекшісі</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Sabina AI — Ақылды Коммуникация & Токсик-Сүзгі</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
@@ -17,11 +17,11 @@
     }
 
     body {
-      background: #090d16;
+      background: #030712;
       background-image: 
-        radial-gradient(at 10% 10%, rgba(217, 70, 239, 0.12) 0px, transparent 40%),
-        radial-gradient(at 90% 90%, rgba(99, 102, 241, 0.12) 0px, transparent 40%);
-      color: #f1f5f9;
+        radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.18) 0px, transparent 45%),
+        radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.2) 0px, transparent 45%);
+      color: #f9fafb;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,26 +33,45 @@
       width: 100%;
       max-width: 520px;
       height: 94vh;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 28px;
+      background: rgba(17, 24, 39, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 32px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 50px rgba(124, 58, 237, 0.25), 0 25px 60px -15px rgba(0, 0, 0, 0.9);
       overflow: hidden;
+      position: relative;
+    }
+
+    /* Top Glowing Bar */
+    .chat-app::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6);
+      z-index: 20;
     }
 
     /* Header */
     .chat-header {
-      padding: 16px 20px;
-      background: rgba(10, 15, 29, 0.9);
+      padding: 18px 20px;
+      background: rgba(11, 15, 25, 0.9);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: space-between;
       z-index: 10;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
     .avatar-wrapper {
@@ -60,23 +79,23 @@
     }
 
     .avatar {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #d946ef, #6366f1);
+      background: linear-gradient(135deg, #ec4899, #7c3aed);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: white;
-      box-shadow: 0 4px 15px rgba(217, 70, 239, 0.35);
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
     }
 
     .online-badge {
-      width: 11px;
-      height: 11px;
+      width: 12px;
+      height: 12px;
       background: #10b981;
-      border: 2px solid #090d16;
+      border: 2px solid #030712;
       border-radius: 50%;
       position: absolute;
       bottom: 2px;
@@ -84,21 +103,37 @@
     }
 
     .header-info h2 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #f8fafc;
-      letter-spacing: -0.2px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .header-info p {
-      font-size: 0.76rem;
-      color: #94a3b8;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .badge-ai {
+      background: rgba(236, 72, 153, 0.15);
+      border: 1px solid rgba(236, 72, 153, 0.4);
+      color: #f472b6;
+      font-size: 0.65rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* FAQ Quick Categories */
     .faq-container {
-      padding: 10px 14px;
-      background: rgba(10, 15, 29, 0.5);
+      padding: 12px 16px;
+      background: rgba(11, 15, 25, 0.6);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       gap: 8px;
@@ -111,24 +146,30 @@
     }
 
     .faq-chip {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #cbd5e1;
+      color: #d1d5db;
       padding: 7px 14px;
       border-radius: 20px;
-      font-size: 0.76rem;
-      font-weight: 500;
+      font-size: 0.78rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25 ease;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
+    .faq-chip.warning {
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+    }
+
     .faq-chip:hover {
-      background: rgba(217, 70, 239, 0.2);
-      border-color: #d946ef;
+      background: rgba(236, 72, 153, 0.25);
+      border-color: #ec4899;
       color: #fff;
+      transform: translateY(-1px);
     }
 
     /* Chat Messages Area */
@@ -138,7 +179,7 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       scroll-behavior: smooth;
     }
 
@@ -153,13 +194,13 @@
     .message-row {
       display: flex;
       flex-direction: column;
-      max-width: 90%;
-      animation: fadeIn 0.25s ease-out;
+      max-width: 92%;
+      animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .message-row.user {
@@ -171,10 +212,10 @@
     }
 
     .bubble {
-      padding: 13px 17px;
-      border-radius: 18px;
-      font-size: 0.9rem;
-      line-height: 1.55;
+      padding: 14px 18px;
+      border-radius: 22px;
+      font-size: 0.92rem;
+      line-height: 1.6;
       word-break: break-word;
     }
 
@@ -182,13 +223,13 @@
       background: linear-gradient(135deg, #6366f1, #4f46e5);
       color: #ffffff;
       border-bottom-right-radius: 4px;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
     }
 
     .ai .bubble {
-      background: rgba(30, 41, 59, 0.7);
+      background: rgba(31, 41, 55, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #e2e8f0;
+      color: #f3f4f6;
       border-bottom-left-radius: 4px;
     }
 
@@ -206,36 +247,38 @@
       color: #f472b6;
     }
     .ai .bubble blockquote {
-      border-left: 3px solid #d946ef;
-      padding-left: 10px;
-      margin: 8px 0;
-      color: #94a3b8;
+      border-left: 3px solid #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 8px 12px;
+      border-radius: 0 12px 12px 0;
+      margin: 10px 0;
+      color: #fca5a5;
       font-style: italic;
     }
 
     .time-stamp {
       font-size: 0.65rem;
-      color: #64748b;
-      margin-top: 4px;
+      color: #6b7280;
+      margin-top: 5px;
       align-self: flex-end;
     }
 
-    /* Typing Indicator */
+    /* Wave Typing Animation */
     .typing-indicator {
       display: flex;
       align-items: center;
       gap: 5px;
-      padding: 12px 16px;
-      background: rgba(30, 41, 59, 0.7);
-      border-radius: 18px;
+      padding: 14px 18px;
+      background: rgba(31, 41, 55, 0.75);
+      border-radius: 22px;
       border-bottom-left-radius: 4px;
       width: fit-content;
     }
 
     .dot {
-      width: 6px;
-      height: 6px;
-      background: #94a3b8;
+      width: 7px;
+      height: 7px;
+      background: #ec4899;
       border-radius: 50%;
       animation: bounce 1.4s infinite ease-in-out both;
     }
@@ -244,14 +287,14 @@
     .dot:nth-child(2) { animation-delay: -0.16s; }
 
     @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0); }
-      40% { transform: scale(1); }
+      0%, 80%, 100% { transform: scale(0); opacity: 0.4; }
+      40% { transform: scale(1.2); opacity: 1; }
     }
 
     /* Input Footer */
     .chat-footer {
-      padding: 14px 16px;
-      background: rgba(10, 15, 29, 0.9);
+      padding: 16px;
+      background: rgba(11, 15, 25, 0.95);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       gap: 10px;
@@ -260,47 +303,49 @@
 
     .input-wrapper {
       flex: 1;
+      position: relative;
     }
 
     input {
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 14px;
+      padding: 13px 18px;
+      border-radius: 18px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(17, 24, 39, 0.8);
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       outline: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
 
     input:focus {
-      border-color: #d946ef;
-      box-shadow: 0 0 0 3px rgba(217, 70, 239, 0.15);
+      border-color: #ec4899;
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.2);
     }
 
     input::placeholder {
-      color: #64748b;
+      color: #6b7280;
     }
 
     .send-btn {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       border: none;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #d946ef, #6366f1);
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ec4899, #7c3aed);
       color: white;
-      font-size: 1rem;
+      font-size: 1.1rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.2s;
-      box-shadow: 0 4px 12px rgba(217, 70, 239, 0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
     }
 
     .send-btn:hover {
-      transform: scale(1.04);
+      transform: scale(1.06);
+      box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
     }
   </style>
 </head>
@@ -309,29 +354,32 @@
 <div class="chat-app">
   <!-- Header -->
   <div class="chat-header">
-    <div class="avatar-wrapper">
-      <div class="avatar"><i class="fa-solid fa-brain"></i></div>
-      <div class="online-badge"></div>
+    <div class="header-left">
+      <div class="avatar-wrapper">
+        <div class="avatar"><i class="fa-solid fa-shield-cat"></i></div>
+        <div class="online-badge"></div>
+      </div>
+      <div class="header-info">
+        <h2>Sabina AI ✨</h2>
+        <p>Психологиялық Сарапшы & Қорғаныс</p>
+      </div>
     </div>
-    <div class="header-info">
-      <h2>Sabina AI ✨</h2>
-      <p>Саналы қарым-қатынас & Психологиялық ЖИ Көмекші</p>
-    </div>
+    <div class="badge-ai">PRO SYSTEM</div>
   </div>
 
   <!-- FAQ Quick Categories -->
   <div class="faq-container">
-    <div class="faq-chip" onclick="sendQuickMessage('Кез келген жастағы қызбен танысуды әдемі, салмақты бастау жолы қандай?')">
-      <i class="fa-regular fa-comment-dots"></i> Алғашқы қадам
+    <div class="faq-chip warning" onclick="sendQuickMessage('«Токсик» немесе пайдаланып жүрген қызды қалай бірден тануға болады?')">
+      <i class="fa-solid fa-triangle-exclamation"></i> 🚩 Токсиктен қорғаныс
     </div>
-    <div class="faq-chip" onclick="sendQuickMessage('Егер ол жауапты салқын қайтарса немесе мені елемей бастаса не істеу керек?')">
-      <i class="fa-solid fa-shield-halved"></i> Шекара қою & Суып кетсе
+    <div class="faq-chip" onclick="sendQuickMessage('Кез келген жаста өз абыройыңды жоғалтпай, сыйлы болып сөйлесу алгоритмі қандай?')">
+      <i class="fa-solid fa-crown"></i> Өзіңді сыйлату
     </div>
-    <div class="faq-chip" onclick="sendQuickMessage('Қыздың сөйлесу стиліне қарап, оның мінезін (психотипін) қалай анықтаймын?')">
-      <i class="fa-solid fa-magnifying-glass"></i> Психотипті тану
+    <div class="faq-chip" onclick="sendQuickMessage('Егер ол мені елемесе немесе «жауапсыз» қалдырса, қалай әдемі тоқтату керек?')">
+      <i class="fa-solid fa-hand"></i> Нүкте қою
     </div>
-    <div class="faq-chip" onclick="sendQuickMessage('Бетпе-бет кездесуде немесе диалогта өзіңді қалай дұрыс ұстау керек?')">
-      <i class="fa-solid fa-user-check"></i> Өз болмысыңды сақтау
+    <div class="faq-chip" onclick="sendQuickMessage('Қызды ренжітпей, бірақ өзіңнің мықты ұстанымыңды қалай білдіресің?')">
+      <i class="fa-solid fa-gem"></i> Нағыз еркектік мінез
     </div>
   </div>
 
@@ -339,9 +387,9 @@
   <div class="chat-body" id="chatBody">
     <div class="message-row ai">
       <div class="bubble">
-        Сәлем! Мен **Сабинамын** — коммуникация және әлеуметтік психология саласындағы сарапшы ЖИ көмекшіңмін. 🧠<br><br>
-        Менің мақсатым — арзан «шаблондар» ұсыну емес, кез келген жаста **өзіңді сенімді, салмақты әрі тартымды ұстауды** үйрету.<br><br>
-        Маған араларыңдағы диалогты, қыздың жауабын немесе тығырыққа тірелген жағдайды жаз. Мен психологиялық талдау жасап беремін! 💡
+        Сәлем! Мен **Sabina AI** — сапалы коммуникация мен психологиялық қауіпсіздік ЖИ жүйесімін. 🛡️<br><br>
+        Менің басты міндетім — сенің уақытың мен эмоционалды денсаулығыңды қорғау. **Арзан ойындарға алданбай, өзіңді жоғалтпай және токсик қарым-қатынастарға ұрынбай** сөйлесуді үйретемін.<br><br>
+        Маған кез келген диалогты немесе жағдайды жаз, мен терең анализ жасап беремін! 💡
       </div>
       <span class="time-stamp" id="initTime"></span>
     </div>
@@ -350,7 +398,7 @@
   <!-- Input Footer -->
   <div class="chat-footer">
     <div class="input-wrapper">
-      <input type="text" id="userInput" placeholder="Жағдайды немесе жазғың келген сөзді жаз..." onkeypress="handleKeyPress(event)">
+      <input type="text" id="userInput" placeholder="Жағдайды немесе диалогты жазыңыз..." onkeypress="handleKeyPress(event)">
     </div>
     <button class="send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
   </div>
@@ -362,34 +410,29 @@
   const k2 = "WGdyb3FYEkdq4KlWuvzkj4oR9h9QIWRG";
   const GROQ_API_KEY = k1 + k2;
 
-  // Ғылыми жобаға арналған тереңдетілген психологиялық промпт
+  // WOW + Қауіпсіздік & Өмірлік сабақ беретін терең промпт
   const SYSTEM_PROMPT = `
-  Сен "Сабина" (Sabina AI) — цифрлық коммуникация, эмпатия және тұлғалық даму саласындағы жоғары деңгейлі ЖИ сарапшысысың.
+  Сен "Сабина" (Sabina AI) — сапалы қарым-қатынас, эмоционалды интеллект және тұлғалық шекараны қорғау саласындағы заманауи ЖИ сарапшысысың.
 
-  Пайдаланушының кез келген сұрағына балалық жаттанды сөзсіз, салмақты, парасатты және кез келген жасқа (жастарға да, ересектерге де) сәйкес келетін терең сараптамамен жауап бер.
+  Сенің мақсатың — пайдаланушыны жаман, токсик, манипулятор, пайдакүнем қыздардан КОРҒАУ және өмірлік сабақ беру.
 
-  Жауабыңның МӘҢГІЛІК ҚҰРЫЛЫМЫ:
+  ЖАУАПТЫҢ СТРИКТ СТРУКТУРАСЫ:
 
-  1. 🧠 **Сұхбаттастың психологиясы & Жасырын астар (Subtext):**
-     - Сұхбаттас тарап бұл сөзді қалай қабылдайды?
-     - Оның артында қандай эмоция тұр (қызығушылық, байқап көру, суықтық, бейжайлық)?
+  1. 🚨 **🚩 «ҚЫЗЫЛ ЖАЛАУШАЛАР» ТЕСТІ (Токсик-анализ):**
+     - Қыздың бұл әрекетінде/сөзінде манипуляция, пайдалану, сыйламаушылық немесе «қызыл жалауша» бар ма? (Ашық түсіндір). Егер бәрі дұрыс болса, «Жасыл жарық 🟢» деп белгіле.
 
-  2. ✅ **ОСЫЛАЙ ІСТЕ (Алтын ережелер):**
-     - Өз болмысыңды сақтау, сабырлылық, өзіңді төмендетпеу.
-     - Сенімді әрі тартымды көрінудің 2-3 нақты тактикасы.
+  2. 🧠 **ӨМІРЛІК САБАҚ (Life Lesson):**
+     - Бұл жағдай пайдаланушыға қандай үлкен сабақ береді? Өз құнын түсірмеу, шекара қою туралы 1-2 парасатты сөйлем.
 
-  3. ❌ **МҰНЫ МҮЛДЕМ ЖАСАМА (Шекаралар):**
-     - Бұл жағдайда қандай қателік жіберуге болмайды (жабысу, ақталу, тым эмоционалды болу, т.б.)?
+  3. ✅ **ОСЫЛАЙ ІСТЕ (Дұрыс тактика):**
+     - Еркектік ұстанымды сақтай отырып, жағдайды уыста ұстаудың 2 нақты қадамы.
 
-  4. 💬 **Сценарийлер мен Вариациялар (Жауап нұсқалары):**
-     - 🌿 *Сабырлы & Сенімді стиль (Интеллигентті):*
-     - ⚡️ *Жеңіл & Әзіл стиль (Оңай атмосфера):*
-     - 🎯 *Тікелей & Нақты стиль (Ересектерге сай):*
+  4. 💬 **Сценарийлер (Кез келген жасқа сай дайын жауаптар):**
+     - 🔥 *Сенімді & Дипломатиялық (Ересек стиль):*
+     - ⚡️ *Тікелей & Нақты (Шекара қою):*
+     - 🕊️ *Әдемі қоштасу / Тоқтату (Егер токсик болса):*
 
-  5. 🛑 **Егер сұхбаттас суып кетсе немесе өзіңе ұнамай қалса:**
-     - Қалай әдемі, өзіңді жоғалтпай, абыроймен шығу керек?
-
-  Сөйлеу стилің: Академиялық сауатты, жылы, қолдау көрсететін, Markdown форматын (болд, тізімдер, цитаталар) шебер қолданатын жетекші дауыс.
+  Сөйлеу мәнерің: Өте парасатты, WOW-эффект сыйлайтын, сауатты қазақ тілінде, Markdown форматын (болд, цитаталар, эмодзи) керемет қолданатын интеллект.
   `;
 
   let conversationHistory = [
@@ -441,7 +484,7 @@
         conversationHistory.push({ role: 'assistant', content: aiReply });
         appendAiMessage(aiReply);
       } else {
-        appendAiMessage('Жүйеде уақытша іркіліс болды. Өтініш, қайталап көріңіз.');
+        appendAiMessage('Жүйеде іркіліс болды. Өтініш, қайталап көріңіз.');
       }
     } catch (e) {
       removeTypingIndicator(typingId);
@@ -471,7 +514,7 @@
       </div>
     `;
     chatBody.insertAdjacentHTML('beforeend', html);
-    chatBody.scrollTop = chatBody.scrollHeight;
+    chatBody.scrollTop = chatBody.scrollTop = chatBody.scrollHeight;
   }
 
   function showTypingIndicator() {
