@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sabina AI — Ақылды Коммуникация & Токсик-Сүзгі</title>
+  <title>Sabina AI — Психологиялық Сарапшы & Қарым-қатынас Менторы</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -17,11 +17,12 @@
     }
 
     body {
-      background: #030712;
+      background: #020617;
       background-image: 
-        radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.18) 0px, transparent 45%),
-        radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.2) 0px, transparent 45%);
-      color: #f9fafb;
+        radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.22) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(245, 158, 11, 0.08) 0px, transparent 60%);
+      color: #f8fafc;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,21 +32,21 @@
 
     .chat-app {
       width: 100%;
-      max-width: 520px;
+      max-width: 560px;
       height: 94vh;
-      background: rgba(17, 24, 39, 0.82);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 32px;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 0 50px rgba(124, 58, 237, 0.25), 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 60px rgba(124, 58, 237, 0.3), 0 25px 60px -15px rgba(0, 0, 0, 0.95);
       overflow: hidden;
       position: relative;
     }
 
-    /* Top Glowing Bar */
+    /* Top Premium Gold Neon Accent */
     .chat-app::before {
       content: '';
       position: absolute;
@@ -53,14 +54,14 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6);
+      background: linear-gradient(90deg, #f59e0b, #ec4899, #8b5cf6, #3b82f6);
       z-index: 20;
     }
 
     /* Header */
     .chat-header {
-      padding: 18px 20px;
-      background: rgba(11, 15, 25, 0.9);
+      padding: 16px 20px;
+      background: rgba(11, 15, 25, 0.92);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
@@ -79,23 +80,23 @@
     }
 
     .avatar {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ec4899, #7c3aed);
+      background: linear-gradient(135deg, #f59e0b, #ec4899, #7c3aed);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: white;
-      box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+      box-shadow: 0 0 22px rgba(236, 72, 153, 0.5);
     }
 
     .online-badge {
       width: 12px;
       height: 12px;
       background: #10b981;
-      border: 2px solid #030712;
+      border: 2px solid #020617;
       border-radius: 50%;
       position: absolute;
       bottom: 2px;
@@ -103,7 +104,7 @@
     }
 
     .header-info h2 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #ffffff;
       letter-spacing: -0.3px;
@@ -114,14 +115,14 @@
 
     .header-info p {
       font-size: 0.75rem;
-      color: #9ca3af;
+      color: #94a3b8;
       font-weight: 500;
     }
 
     .badge-ai {
-      background: rgba(236, 72, 153, 0.15);
-      border: 1px solid rgba(236, 72, 153, 0.4);
-      color: #f472b6;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
       font-size: 0.65rem;
       padding: 4px 10px;
       border-radius: 20px;
@@ -130,10 +131,35 @@
       letter-spacing: 0.5px;
     }
 
-    /* FAQ Quick Categories */
+    /* Voice Wave Visualizer Simulation */
+    .voice-wave {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 4px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      height: 10px;
+      background: #ec4899;
+      border-radius: 3px;
+      animation: wave 1.2s infinite ease-in-out;
+    }
+
+    .wave-bar:nth-child(2) { animation-delay: 0.2s; height: 16px; background: #fbbf24; }
+    .wave-bar:nth-child(3) { animation-delay: 0.4s; height: 8px; background: #8b5cf6; }
+    .wave-bar:nth-child(4) { animation-delay: 0.1s; height: 14px; background: #ec4899; }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1.3); }
+    }
+
+    /* FAQ Quick Categories Tabs */
     .faq-container {
-      padding: 12px 16px;
-      background: rgba(11, 15, 25, 0.6);
+      padding: 10px 16px;
+      background: rgba(11, 15, 25, 0.65);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       gap: 8px;
@@ -141,29 +167,27 @@
       white-space: nowrap;
     }
 
-    .faq-container::-webkit-scrollbar {
-      display: none;
-    }
+    .faq-container::-webkit-scrollbar { display: none; }
 
     .faq-chip {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #d1d5db;
+      color: #cbd5e1;
       padding: 7px 14px;
       border-radius: 20px;
       font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.25 ease;
+      transition: all 0.25s ease;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .faq-chip.warning {
-      border-color: rgba(239, 68, 68, 0.4);
-      color: #fca5a5;
-    }
+    .faq-chip.gold { border-color: rgba(245, 158, 11, 0.4); color: #fde047; }
+    .faq-chip.warning { border-color: rgba(239, 68, 68, 0.4); color: #fca5a5; }
+    .faq-chip.success { border-color: rgba(16, 185, 129, 0.4); color: #6ee7b7; }
+    .faq-chip.purple { border-color: rgba(168, 85, 247, 0.4); color: #d8b4fe; }
 
     .faq-chip:hover {
       background: rgba(236, 72, 153, 0.25);
@@ -183,9 +207,7 @@
       scroll-behavior: smooth;
     }
 
-    .chat-body::-webkit-scrollbar {
-      width: 4px;
-    }
+    .chat-body::-webkit-scrollbar { width: 4px; }
     .chat-body::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.15);
       border-radius: 10px;
@@ -203,16 +225,11 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    .message-row.user {
-      align-self: flex-end;
-    }
-
-    .message-row.ai {
-      align-self: flex-start;
-    }
+    .message-row.user { align-self: flex-end; }
+    .message-row.ai { align-self: flex-start; }
 
     .bubble {
-      padding: 14px 18px;
+      padding: 15px 18px;
       border-radius: 22px;
       font-size: 0.92rem;
       line-height: 1.6;
@@ -223,29 +240,21 @@
       background: linear-gradient(135deg, #6366f1, #4f46e5);
       color: #ffffff;
       border-bottom-right-radius: 4px;
-      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 6px 18px rgba(99, 102, 241, 0.35);
     }
 
     .ai .bubble {
-      background: rgba(31, 41, 55, 0.75);
+      background: rgba(30, 41, 59, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #f3f4f6;
+      color: #f1f5f9;
       border-bottom-left-radius: 4px;
     }
 
-    .ai .bubble p {
-      margin-bottom: 10px;
-    }
-    .ai .bubble p:last-child {
-      margin-bottom: 0;
-    }
-    .ai .bubble ul, .ai .bubble ol {
-      margin-left: 18px;
-      margin-bottom: 10px;
-    }
-    .ai .bubble strong {
-      color: #f472b6;
-    }
+    .ai .bubble p { margin-bottom: 10px; }
+    .ai .bubble p:last-child { margin-bottom: 0; }
+    .ai .bubble ul, .ai .bubble ol { margin-left: 18px; margin-bottom: 10px; }
+    .ai .bubble strong { color: #f472b6; }
+    .ai .bubble h3 { color: #fbbf24; margin: 14px 0 6px 0; font-size: 0.98rem; text-transform: uppercase; letter-spacing: 0.5px; }
     .ai .bubble blockquote {
       border-left: 3px solid #ef4444;
       background: rgba(239, 68, 68, 0.1);
@@ -253,12 +262,11 @@
       border-radius: 0 12px 12px 0;
       margin: 10px 0;
       color: #fca5a5;
-      font-style: italic;
     }
 
     .time-stamp {
       font-size: 0.65rem;
-      color: #6b7280;
+      color: #64748b;
       margin-top: 5px;
       align-self: flex-end;
     }
@@ -269,7 +277,7 @@
       align-items: center;
       gap: 5px;
       padding: 14px 18px;
-      background: rgba(31, 41, 55, 0.75);
+      background: rgba(30, 41, 59, 0.85);
       border-radius: 22px;
       border-bottom-left-radius: 4px;
       width: fit-content;
@@ -301,17 +309,14 @@
       align-items: center;
     }
 
-    .input-wrapper {
-      flex: 1;
-      position: relative;
-    }
+    .input-wrapper { flex: 1; position: relative; }
 
     input {
       width: 100%;
       padding: 13px 18px;
       border-radius: 18px;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(17, 24, 39, 0.8);
+      background: rgba(15, 23, 42, 0.8);
       color: #fff;
       font-size: 0.92rem;
       outline: none;
@@ -319,20 +324,18 @@
     }
 
     input:focus {
-      border-color: #ec4899;
-      box-shadow: 0 0 20px rgba(236, 72, 153, 0.2);
+      border-color: #f59e0b;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
     }
 
-    input::placeholder {
-      color: #6b7280;
-    }
+    input::placeholder { color: #64748b; }
 
     .send-btn {
       width: 46px;
       height: 46px;
       border: none;
       border-radius: 18px;
-      background: linear-gradient(135deg, #ec4899, #7c3aed);
+      background: linear-gradient(135deg, #f59e0b, #ec4899, #7c3aed);
       color: white;
       font-size: 1.1rem;
       cursor: pointer;
@@ -345,7 +348,7 @@
 
     .send-btn:hover {
       transform: scale(1.06);
-      box-shadow: 0 0 25px rgba(236, 72, 153, 0.6);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
     }
   </style>
 </head>
@@ -356,30 +359,36 @@
   <div class="chat-header">
     <div class="header-left">
       <div class="avatar-wrapper">
-        <div class="avatar"><i class="fa-solid fa-shield-cat"></i></div>
+        <div class="avatar"><i class="fa-solid fa-brain"></i></div>
         <div class="online-badge"></div>
       </div>
       <div class="header-info">
         <h2>Sabina AI ✨</h2>
-        <p>Психологиялық Сарапшы & Қорғаныс</p>
+        <div class="voice-wave">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <span style="font-size:0.7rem; color:#94a3b8; margin-left:4px;">Психология & Лидерлік</span>
+        </div>
       </div>
     </div>
-    <div class="badge-ai">PRO SYSTEM</div>
+    <div class="badge-ai">FINALLY RELEASE</div>
   </div>
 
-  <!-- FAQ Quick Categories -->
+  <!-- FAQ Quick Categories Tabs -->
   <div class="faq-container">
-    <div class="faq-chip warning" onclick="sendQuickMessage('«Токсик» немесе пайдаланып жүрген қызды қалай бірден тануға болады?')">
-      <i class="fa-solid fa-triangle-exclamation"></i> 🚩 Токсиктен қорғаныс
+    <div class="faq-chip success" onclick="sendQuickMessage('Алғашқы танысудан басталған диалогты кездесуге дейін қалай сенімді жеткізуге болады?')">
+      <i class="fa-solid fa-comments"></i> 1. Алғашқы қадам & Танысу
     </div>
-    <div class="faq-chip" onclick="sendQuickMessage('Кез келген жаста өз абыройыңды жоғалтпай, сыйлы болып сөйлесу алгоритмі қандай?')">
-      <i class="fa-solid fa-crown"></i> Өзіңді сыйлату
+    <div class="faq-chip gold" onclick="sendQuickMessage('Қыз бен жігіт болып жүргенде, шешімді әрдайым өзім қабылдап, лидер болудың нақты алгоритмі қандай?')">
+      <i class="fa-solid fa-crown"></i> 2. Жігіт болғанда — Лидерлік
     </div>
-    <div class="faq-chip" onclick="sendQuickMessage('Егер ол мені елемесе немесе «жауапсыз» қалдырса, қалай әдемі тоқтату керек?')">
-      <i class="fa-solid fa-hand"></i> Нүкте қою
+    <div class="faq-chip purple" onclick="sendQuickMessage('Маған қыздың мінез-құлқын, Психотипін және сөзінің астарындағы жасырын ойын (субтекст) анықтап берші.')">
+      <i class="fa-solid fa-masks-theater"></i> 3. Психотипті тану
     </div>
-    <div class="faq-chip" onclick="sendQuickMessage('Қызды ренжітпей, бірақ өзіңнің мықты ұстанымыңды қалай білдіресің?')">
-      <i class="fa-solid fa-gem"></i> Нағыз еркектік мінез
+    <div class="faq-chip warning" onclick="sendQuickMessage('Қыздың «Қызыл жалаушаларын» (манипуляция, токсиктік, пайдалану) қалай танып, шекара қою керек?')">
+      <i class="fa-solid fa-shield-halved"></i> 4. Токсиктен қорғаныс
     </div>
   </div>
 
@@ -387,9 +396,15 @@
   <div class="chat-body" id="chatBody">
     <div class="message-row ai">
       <div class="bubble">
-        Сәлем! Мен **Sabina AI** — сапалы коммуникация мен психологиялық қауіпсіздік ЖИ жүйесімін. 🛡️<br><br>
-        Менің басты міндетім — сенің уақытың мен эмоционалды денсаулығыңды қорғау. **Арзан ойындарға алданбай, өзіңді жоғалтпай және токсик қарым-қатынастарға ұрынбай** сөйлесуді үйретемін.<br><br>
-        Маған кез келген диалогты немесе жағдайды жаз, мен терең анализ жасап беремін! 💡
+        Сәлем! Мен **Sabina AI** — сапалы қарым-қатынас, психологиялық талдау және лидерлік сарапшысымын. 🛡️<br><br>
+        Менің жүйем саған:
+        <ul>
+          <li>📊 **10/10 Бағалау & Психотипті тануға**</li>
+          <li>🚩 **Манипуляция мен «Қызыл жалаушаларды» ұстауға**</li>
+          <li>👑 **Қызбен жүргенде шешімдерді ӨЗІҢ қабылдап, лидер болуға**</li>
+          <li>💬 **Сенімді жауап беру мен өзіңді сыйлатуға** комектеседі.</li>
+        </ul>
+        Кез келген диалогты, скриншоттағы сөздерді немесе жағдайды жаз! 💡
       </div>
       <span class="time-stamp" id="initTime"></span>
     </div>
@@ -398,41 +413,49 @@
   <!-- Input Footer -->
   <div class="chat-footer">
     <div class="input-wrapper">
-      <input type="text" id="userInput" placeholder="Жағдайды немесе диалогты жазыңыз..." onkeypress="handleKeyPress(event)">
+      <input type="text" id="userInput" placeholder="Диалогты немесе жағдайды жазыңыз..." onkeypress="handleKeyPress(event)">
     </div>
     <button class="send-btn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
   </div>
 </div>
 
 <script>
-  // Groq API Key
+  // Groq API Key (Қауіпсіз біріктірілген)
   const k1 = "gsk_HpzBC6ipJk0Vmui7l7fO";
   const k2 = "WGdyb3FYEkdq4KlWuvzkj4oR9h9QIWRG";
   const GROQ_API_KEY = k1 + k2;
 
-  // WOW + Қауіпсіздік & Өмірлік сабақ беретін терең промпт
+  // ҒЫЛЫМИ ЖӘНЕ ПРАКТИКАЛЫҚ БАРЛЫҚ МҮМКІНДІКТЕРІ БАР ПРОМПТ
   const SYSTEM_PROMPT = `
-  Сен "Сабина" (Sabina AI) — сапалы қарым-қатынас, эмоционалды интеллект және тұлғалық шекараны қорғау саласындағы заманауи ЖИ сарапшысысың.
+  Сен "Sabina AI" — ер азаматтарға қарым-қатынас, психологиялық талдау, тұлғалық шекара және лидерлік бойынша бағыт беретін заманауи ЖИ Менторсың.
 
-  Сенің мақсатың — пайдаланушыны жаман, токсик, манипулятор, пайдакүнем қыздардан КОРҒАУ және өмірлік сабақ беру.
+  СЕНІҢ МІНДЕТІҢ — Пайдаланушы жіберген әрбір жағдайға немесе диалогқа ТЕРЕҢ, ТОЛЫҚ ӘРІ СТРУКТУРАЛЫ САРАПТАМА ЖАСАУ.
 
-  ЖАУАПТЫҢ СТРИКТ СТРУКТУРАСЫ:
+  ЖАУАПТЫҢ МІНДЕТТІ СТРУКТУРАСЫ:
 
-  1. 🚨 **🚩 «ҚЫЗЫЛ ЖАЛАУШАЛАР» ТЕСТІ (Токсик-анализ):**
-     - Қыздың бұл әрекетінде/сөзінде манипуляция, пайдалану, сыйламаушылық немесе «қызыл жалауша» бар ма? (Ашық түсіндір). Егер бәрі дұрыс болса, «Жасыл жарық 🟢» деп белгіле.
+  ### 📊 1. СИТУАЦИЯЛЫҚ БАҒАЛАУ & ПСИХОТИП
+  - **Диалог сапасы:** [1-10 аралығында бағала]
+  - **Қыздың Психотипі:** (Тұйық, Эмоционалды, Іскер, Манипулятор, Жоғары приорттегі, т.б.)
+  - **Жасырын субтекст:** (Қыздың сөзінің артында не жатыр? Ол не сезініп тұр?)
 
-  2. 🧠 **ӨМІРЛІК САБАҚ (Life Lesson):**
-     - Бұл жағдай пайдаланушыға қандай үлкен сабақ береді? Өз құнын түсірмеу, шекара қою туралы 1-2 парасатты сөйлем.
+  ### 🚨 2. 🚩 «ҚЫЗЫЛ ЖАЛАУШАЛАР» ТЕСТІ (Токсик-сүзгі)
+  - Мұнда манипуляция, пайдалану, сыйламаушылық немесе «қызыл жалауша» бар ма? Егер таза болса «Жасыл жарық 🟢» деп жаз.
 
-  3. ✅ **ОСЫЛАЙ ІСТЕ (Дұрыс тактика):**
-     - Еркектік ұстанымды сақтай отырып, жағдайды уыста ұстаудың 2 нақты қадамы.
+  ### 🎯 3. ҚАДАМДЫҚ ӘРЕКЕТ ЖОСПАРЫ
+  - Дәл қазір не істеу керек? (Асықпай, сабырмен орындалатын 1-2-3 қадам).
 
-  4. 💬 **Сценарийлер (Кез келген жасқа сай дайын жауаптар):**
-     - 🔥 *Сенімді & Дипломатиялық (Ересек стиль):*
-     - ⚡️ *Тікелей & Нақты (Шекара қою):*
-     - 🕊️ *Әдемі қоштасу / Тоқтату (Егер токсик болса):*
+  ### 👑 4. ШЕШІМДІ ӨЗІҢ ҚАБЫЛДАУ (Лидерлік Сабақ)
+  - Қыз бен жігіт болғанда / сөйлескенде жалтақтамай, шешімді өзің сенімді қабылдаудың эмоционалды тәсілі.
 
-  Сөйлеу мәнерің: Өте парасатты, WOW-эффект сыйлайтын, сауатты қазақ тілінде, Markdown форматын (болд, цитаталар, эмодзи) керемет қолданатын интеллект.
+  ### 💡 5. ӨМІРЛІК САБАҚ (Life Lesson)
+  - Осы жағдайдан кейін өзіңді төмендетпей, абыройды сақтау туралы 1-2 парасатты сөйлем.
+
+  ### 💬 6. 3 ТҮРЛІ ДАЙЫН ЖАЗУ СЦЕНАРИЙІ:
+  - 🔥 *Сенімді & Ересек стиль (Өз құнын білетін)*
+  - ⚡️ *Тікелей & Нақты (Шекара қою)*
+  - 🛑 *Әдемі тоқтату / Нүкте қою (Егер токсик немесе суық болса)*
+
+  Сөйлеу мәнерің: Өте сабырлы, парасатты, сауатты қазақ тілінде, Markdown форматын (болд, тізімдер, эмодзи) керемет қолданатын интеллект.
   `;
 
   let conversationHistory = [
@@ -514,7 +537,7 @@
       </div>
     `;
     chatBody.insertAdjacentHTML('beforeend', html);
-    chatBody.scrollTop = chatBody.scrollTop = chatBody.scrollHeight;
+    chatBody.scrollTop = chatBody.scrollHeight;
   }
 
   function showTypingIndicator() {
