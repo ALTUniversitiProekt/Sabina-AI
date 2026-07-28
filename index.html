@@ -147,7 +147,8 @@
 </div>
 
 <script>
-  const OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY';
+ 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
+  const OPENAI_API_KEY = 'БҰЛ_ЖЕРГЕ_ЖАҢА_API_КІЛТТІ_ҚОЙЫҢЫЗ';
 
   const SYSTEM_PROMPT = `
   Сен "Сабина" есімді өте ақылды, нәзік, түсінігі мол қазақ қызысың. 
@@ -194,11 +195,11 @@
       if (data.choices && data.choices[0]) {
         addMessage(data.choices[0].message.content.replace(/\n/g, '<br>'), 'ai-message');
       } else {
-        addMessage('Кешірім өтінемін, қателік орын алды. API кілтін тексеріңіз.', 'ai-message');
+        addMessage('Кешірім өтінемін, қателік орын алды. API кілтін немесе балансты тексеріңіз.', 'ai-message');
       }
     } catch (e) {
       document.getElementById(loadingId).remove();
-      addMessage('Ғаламтор байланысын немесе API баптауларын тексеріңіз.', 'ai-message');
+      addMessage('Ғаламтор байланысын тексеріңіз.', 'ai-message');
     }
   }
 
