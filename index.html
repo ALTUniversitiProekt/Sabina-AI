@@ -3,99 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sabina AI — Эмоционалды Интеллект & Менторлық Платформасы</title>
-  <meta name="description" content="Sabina AI — Ер азаматтарға арналған қарым-қатынас психологиясы, лидерлік және эмоционалды интеллект платформасы.">
+  <title>Sabina AI Enterprise — Эмоционалды Интеллект Экосистемасы</title>
+  <meta name="description" content="Sabina AI Enterprise — Қарым-қатынас психологиясы, эмоционалды интеллект және тұлғалық лидерлікті талдаудың кешенді IT платформасы.">
   
-  <!-- Inter & Plus Jakarta Sans Fonts -->
+  <!-- Modern Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Marked.js for Markdown Rendering -->
+  <!-- Marked.js Parsing Engine -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <style>
-    /* ==========================================
-       1. CORE SYSTEM STYLES & CSS VARIABLES
-       ========================================== */
+    /* ==========================================================================
+       1. GLOBAL SYSTEM DESIGN VARIABLES & THEME ENGINE
+       ========================================================================== */
     :root {
-      --bg-main: #030712;
-      --bg-card: rgba(17, 24, 39, 0.75);
-      --bg-card-hover: rgba(31, 41, 55, 0.85);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(236, 72, 153, 0.3);
+      --bg-base: #020617;
+      --bg-surface-1: #0f172a;
+      --bg-surface-2: #1e293b;
+      --bg-surface-3: #334155;
       
-      --primary: #ec4899;
-      --primary-gradient: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #8b5cf6 100%);
-      --accent-gold: #f59e0b;
-      --accent-purple: #8b5cf6;
-      --accent-blue: #3b82f6;
+      --accent-primary: #ec4899;
+      --accent-primary-hover: #db2777;
+      --accent-secondary: #8b5cf6;
+      --accent-tertiary: #f59e0b;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
       
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --text-dark: #6b7280;
-      
-      --radius-sm: 8px;
+      --grad-primary: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #8b5cf6 100%);
+      --grad-dark: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.95) 100%);
+      --grad-glow: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+
+      --text-heading: #f8fafc;
+      --text-body: #cbd5e1;
+      --text-muted: #64748b;
+      --text-highlight: #ffffff;
+
+      --border-thin: 1px solid rgba(255, 255, 255, 0.08);
+      --border-active: 1px solid rgba(236, 72, 153, 0.4);
+      --border-glow: 0 0 15px rgba(236, 72, 153, 0.2);
+
+      --radius-xs: 6px;
+      --radius-sm: 10px;
       --radius-md: 16px;
       --radius-lg: 24px;
-      --radius-xl: 32px;
-      
-      --shadow-glow: 0 0 50px rgba(236, 72, 153, 0.18);
-      --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+      --radius-full: 9999px;
+
+      --shadow-elevation-low: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+      --shadow-elevation-high: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+
+      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
     }
 
     body {
-      background-color: var(--bg-main);
-      color: var(--text-main);
+      background-color: var(--bg-base);
+      color: var(--text-body);
+      min-height: 100vh;
       overflow-x: hidden;
       line-height: 1.6;
       background-image: 
-        radial-gradient(at 10% 10%, rgba(236, 72, 153, 0.12) 0px, transparent 50%),
-        radial-gradient(at 90% 90%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(245, 158, 11, 0.05) 0px, transparent 60%);
+        radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(6, 182, 212, 0.05) 0px, transparent 60%);
       background-attachment: fixed;
     }
 
-    /* Scrollbar Design */
+    /* Custom Scrollbars */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 6px;
+      height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: var(--bg-main);
+      background: var(--bg-base);
     }
     ::-webkit-scrollbar-thumb {
-      background: #1f2937;
-      border-radius: 4px;
+      background: var(--bg-surface-3);
+      border-radius: var(--radius-full);
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: var(--primary);
+      background: var(--accent-primary);
     }
 
-    /* ==========================================
-       2. TYPOGRAPHY & BUTTONS
-       ========================================== */
-    h1, h2, h3, .font-heading {
+    /* ==========================================================================
+       2. TYPOGRAPHY & UTILITIES
+       ========================================================================== */
+    h1, h2, h3, h4, .heading-font {
       font-family: 'Space Grotesk', sans-serif;
+      color: var(--text-heading);
       letter-spacing: -0.02em;
     }
 
-    .gradient-text {
-      background: var(--primary-gradient);
+    .text-gradient {
+      background: var(--grad-primary);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* UI Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -104,60 +128,88 @@
       padding: 12px 24px;
       border-radius: var(--radius-md);
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all var(--transition-normal);
       border: none;
       text-decoration: none;
+      outline: none;
+      user-select: none;
     }
 
     .btn-primary {
-      background: var(--primary-gradient);
-      color: #fff;
+      background: var(--grad-primary);
+      color: #ffffff;
       box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
     }
     .btn-primary:hover {
-      transform: translateY(-2px) scale(1.02);
+      transform: translateY(-2px);
       box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5);
     }
 
     .btn-secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.04);
+      border: var(--border-thin);
+      color: var(--text-heading);
+      backdrop-filter: blur(12px);
     }
     .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       border-color: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
 
-    .btn-sm {
-      padding: 8px 16px;
-      font-size: 0.82rem;
+    .btn-icon {
+      width: 42px;
+      height: 42px;
+      padding: 0;
       border-radius: var(--radius-sm);
     }
 
-    /* ==========================================
+    /* Toast Notification */
+    #toastContainer {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast {
+      background: var(--bg-surface-2);
+      border: var(--border-thin);
+      border-left: 4px solid var(--accent-primary);
+      color: var(--text-heading);
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-elevation-high);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 300px;
+      animation: toastIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+
+    @keyframes toastIn {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* ==========================================================================
        3. NAVIGATION BAR
-       ========================================== */
+       ========================================================================== */
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 1000;
-      background: rgba(3, 7, 18, 0.85);
+      background: rgba(2, 6, 23, 0.8);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 16px 0;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
+      border-bottom: var(--border-thin);
+      padding: 18px 0;
     }
 
     .nav-wrapper {
@@ -166,664 +218,560 @@
       justify-content: space-between;
     }
 
-    .logo {
+    .brand-logo {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-decoration: none;
     }
 
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--primary-gradient);
+    .brand-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-sm);
+      background: var(--grad-primary);
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.2rem;
-      box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+      font-size: 1.3rem;
+      box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
     }
 
-    .logo-text {
-      font-size: 1.25rem;
+    .brand-title {
+      font-size: 1.35rem;
       font-weight: 800;
-      color: var(--text-main);
+      color: var(--text-heading);
     }
 
-    .nav-links {
+    .nav-menu {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 36px;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-menu a {
       color: var(--text-muted);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.9rem;
-      transition: color 0.2s;
+      font-size: 0.92rem;
+      transition: color var(--transition-fast);
     }
 
-    .nav-links a:hover {
-      color: var(--primary);
+    .nav-menu a:hover {
+      color: var(--accent-primary);
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    /* ==========================================
-       4. HERO & MISSION SECTION
-       ========================================== */
-    .hero {
-      padding: 160px 0 100px 0;
+    /* ==========================================================================
+       4. HERO & PLATFORM MISSION
+       ========================================================================== */
+    .hero-section {
+      padding: 170px 0 100px 0;
       position: relative;
     }
 
-    .hero-grid {
+    .hero-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 60px;
       align-items: center;
     }
 
-    .hero-badge {
+    .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
-      border-radius: 30px;
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.2);
-      color: var(--accent-gold);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      color: var(--accent-tertiary);
       font-size: 0.85rem;
       font-weight: 700;
       margin-bottom: 24px;
     }
 
-    .hero-title {
-      font-size: 3.5rem;
-      line-height: 1.15;
+    .hero-heading {
+      font-size: 3.8rem;
+      line-height: 1.1;
       font-weight: 800;
+      margin-bottom: 28px;
+    }
+
+    .hero-subtext {
+      font-size: 1.18rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 580px;
+    }
+
+    .founder-manifesto {
+      background: var(--bg-surface-1);
+      border: var(--border-thin);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      position: relative;
+      box-shadow: var(--shadow-elevation-high);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .founder-manifesto::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad-primary);
+    }
+
+    .founder-profile {
+      display: flex;
+      align-items: center;
+      gap: 18px;
       margin-bottom: 24px;
     }
 
-    .hero-description {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 36px;
-      max-width: 540px;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .stat-item h4 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .stat-item p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    /* Founder Message Card */
-    .founder-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: 36px;
-      position: relative;
-      box-shadow: var(--shadow-card);
-      backdrop-filter: blur(20px);
-    }
-
-    .founder-card::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: var(--radius-xl);
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(236, 72, 153, 0.5), transparent, rgba(139, 92, 246, 0.5));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .founder-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .founder-avatar {
-      width: 60px;
-      height: 60px;
+    .avatar-box {
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
-      background: var(--primary-gradient);
+      background: var(--grad-primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: white;
     }
 
-    .founder-info h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
+    /* ==========================================================================
+       5. MAIN ENTERPRISE WORKSPACE (APPLICATION)
+       ========================================================================== */
+    .app-workspace {
+      padding: 60px 0 120px 0;
     }
 
-    .founder-info p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .founder-quote {
-      font-style: italic;
-      color: #e2e8f0;
-      font-size: 0.98rem;
-      line-height: 1.7;
-    }
-
-    /* ==========================================
-       5. MAIN INTERACTIVE AI APP SECTION
-       ========================================== */
-    .app-section {
-      padding: 80px 0;
-      position: relative;
-      id: "ai-app";
-    }
-
-    .app-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-glow), var(--shadow-card);
-      overflow: hidden;
+    .workspace-card {
+      background: var(--bg-surface-1);
+      border: var(--border-thin);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-elevation-high);
       display: grid;
-      grid-template-columns: 320px 1fr;
-      min-height: 680px;
+      grid-template-columns: 340px 1fr 320px;
+      min-height: 780px;
+      overflow: hidden;
     }
 
-    /* Sidebar Controls & Analytics */
-    .app-sidebar {
-      background: rgba(11, 15, 25, 0.95);
-      border-right: 1px solid var(--border-color);
+    /* Left Drawer: Session History & Settings */
+    .app-drawer {
+      background: rgba(10, 15, 29, 0.95);
+      border-right: var(--border-thin);
       padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 24px;
     }
 
-    .sidebar-title {
-      font-size: 0.85rem;
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       color: var(--text-muted);
       font-weight: 700;
     }
 
-    .metric-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 16px;
-    }
-
-    .metric-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .progress-bar-bg {
-      width: 100%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: var(--primary-gradient);
-      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .preset-chips {
+    .session-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-height: 240px;
+      overflow-y: auto;
     }
 
-    .chip-btn {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 10px 14px;
-      border-radius: var(--radius-md);
-      font-size: 0.82rem;
-      text-align: left;
+    .session-item {
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      border: var(--border-thin);
       cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .chip-btn:hover {
-      background: rgba(236, 72, 153, 0.15);
-      border-color: var(--primary);
-      color: #fff;
-    }
-
-    /* Main Chat Workspace */
-    .app-main {
-      display: flex;
-      flex-direction: column;
-      background: rgba(15, 23, 42, 0.6);
-    }
-
-    .chat-header {
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      transition: all var(--transition-fast);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(11, 15, 25, 0.5);
     }
 
-    .chat-status {
+    .session-item:hover, .session-item.active {
+      background: rgba(236, 72, 153, 0.12);
+      border-color: var(--accent-primary);
+      color: white;
+    }
+
+    /* Center Section: Main Interactive Chat */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      background: rgba(15, 23, 42, 0.4);
+    }
+
+    .chat-topbar {
+      padding: 20px 28px;
+      border-bottom: var(--border-thin);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .live-indicator {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.85rem;
-      color: #10b981;
+      font-size: 0.88rem;
       font-weight: 600;
+      color: var(--accent-emerald);
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #10b981;
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--accent-emerald);
       border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
+      box-shadow: 0 0 12px var(--accent-emerald);
+      animation: pulse 2s infinite;
     }
 
-    .chat-messages {
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .chat-viewport {
       flex: 1;
-      padding: 24px;
+      padding: 32px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      max-height: 480px;
+      gap: 24px;
+      max-height: 540px;
     }
 
-    .msg-row {
+    .message-row {
       display: flex;
       flex-direction: column;
-      max-width: 88%;
-      animation: msgSlide 0.3s ease-out;
+      max-width: 85%;
+      animation: messageSlide 0.3s ease-out;
     }
 
-    @keyframes msgSlide {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes messageSlide {
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .msg-row.user { align-self: flex-end; }
-    .msg-row.ai { align-self: flex-start; }
+    .message-row.user { align-self: flex-end; }
+    .message-row.assistant { align-self: flex-start; }
 
-    .msg-bubble {
-      padding: 16px 20px;
+    .message-bubble {
+      padding: 18px 24px;
       border-radius: var(--radius-md);
-      font-size: 0.92rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
+      line-height: 1.65;
     }
 
-    .msg-row.user .msg-bubble {
-      background: linear-gradient(135deg, #6366f1, #4f46e5);
-      color: #fff;
+    .message-row.user .message-bubble {
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #ffffff;
       border-bottom-right-radius: 4px;
     }
 
-    .msg-row.ai .msg-bubble {
-      background: rgba(30, 41, 59, 0.9);
-      border: 1px solid var(--border-color);
-      color: #f1f5f9;
+    .message-row.assistant .message-bubble {
+      background: var(--bg-surface-2);
+      border: var(--border-thin);
+      color: var(--text-body);
       border-bottom-left-radius: 4px;
     }
 
-    .msg-bubble h3 {
-      color: var(--accent-gold);
-      margin: 12px 0 6px 0;
-      font-size: 0.95rem;
-    }
-
-    .msg-bubble ul {
-      margin-left: 20px;
-      margin-bottom: 10px;
-    }
-
-    .msg-time {
-      font-size: 0.68rem;
-      color: var(--text-dark);
-      margin-top: 4px;
+    .message-timestamp {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 6px;
       align-self: flex-end;
     }
 
-    .chat-input-area {
-      padding: 20px 24px;
-      border-top: 1px solid var(--border-color);
-      background: rgba(11, 15, 25, 0.8);
-      display: flex;
-      gap: 12px;
+    /* Audio Waveform Canvas Box */
+    .audio-visualizer-box {
+      display: none;
+      padding: 12px 20px;
+      background: rgba(2, 6, 23, 0.9);
+      border-top: var(--border-thin);
       align-items: center;
+      gap: 16px;
     }
 
-    .chat-input {
+    .audio-canvas {
       flex: 1;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 14px 20px;
-      color: #fff;
-      font-size: 0.92rem;
-      outline: none;
-      transition: border-color 0.2s;
+      height: 40px;
+      background: transparent;
     }
 
-    .chat-input:focus {
-      border-color: var(--primary);
-    }
-
-    /* ==========================================
-       6. FEATURES & METHODOLOGY SECTION
-       ========================================== */
-    .features-section {
-      padding: 100px 0;
-      background: rgba(11, 15, 25, 0.4);
-      border-top: 1px solid var(--border-color);
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 640px;
-      margin: 0 auto 60px auto;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .section-subtitle {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    .feature-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--border-accent);
-      box-shadow: 0 10px 30px rgba(236, 72, 153, 0.1);
-    }
-
-    .feature-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: var(--radius-md);
-      background: rgba(236, 72, 153, 0.1);
-      border: 1px solid rgba(236, 72, 153, 0.2);
-      color: var(--primary);
+    .chat-controls {
+      padding: 24px;
+      border-top: var(--border-thin);
+      background: rgba(10, 15, 29, 0.9);
       display: flex;
+      gap: 14px;
       align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
     }
 
-    .feature-card h3 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+    .chat-input-field {
+      flex: 1;
+      background: var(--bg-surface-1);
+      border: var(--border-thin);
+      border-radius: var(--radius-md);
+      padding: 16px 22px;
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
     }
 
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
+    .chat-input-field:focus {
+      border-color: var(--accent-primary);
+      box-shadow: var(--border-glow);
     }
 
-    /* ==========================================
-       7. FOOTER SECTION
-       ========================================== */
-    .footer {
-      padding: 60px 0 30px 0;
-      border-top: 1px solid var(--border-color);
-      background: #020617;
+    /* Right Section: Analytics Panel & Canvas Radar Chart */
+    .analytics-panel {
+      background: rgba(10, 15, 29, 0.95);
+      border-left: var(--border-thin);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
 
-    .footer-wrapper {
+    .radar-chart-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: var(--border-thin);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+    }
+
+    canvas#radarCanvas {
+      width: 100% !important;
+      max-width: 240px;
+      height: 240px !important;
+      margin: 0 auto;
+    }
+
+    .metric-gauge {
+      margin-top: 8px;
+    }
+
+    .gauge-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
+      margin-bottom: 6px;
     }
 
-    .footer-bottom {
-      padding-top: 30px;
-      text-align: center;
-      color: var(--text-dark);
-      font-size: 0.85rem;
+    .gauge-track {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      overflow: hidden;
     }
 
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .app-container { grid-template-columns: 1fr; }
-      .app-sidebar { display: none; }
-      .features-grid { grid-template-columns: 1fr; }
+    .gauge-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--grad-primary);
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Responsive Adaptation */
+    @media (max-width: 1200px) {
+      .workspace-card { grid-template-columns: 1fr; }
+      .app-drawer, .analytics-panel { display: none; }
+      .hero-layout { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- TOAST SYSTEM CONTAINER -->
+  <div id="toastContainer"></div>
+
+  <!-- NAVIGATION BAR -->
   <nav class="navbar">
     <div class="container nav-wrapper">
-      <a href="#" class="logo">
-        <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
-        <span class="logo-text">Sabina <span class="gradient-text">AI</span></span>
+      <a href="#" class="brand-logo">
+        <div class="brand-badge"><i class="fa-solid fa-brain"></i></div>
+        <span class="brand-title">Sabina <span class="text-gradient">AI Enterprise</span></span>
       </a>
-      
-      <ul class="nav-links">
-        <li><a href="#about">Компания Миссиясы</a></li>
-        <li><a href="#ai-app">Платформа</a></li>
-        <li><a href="#methodology">Методология</a></li>
-        <li><a href="#impact">Коғамдық Пайдасы</a></li>
+
+      <ul class="nav-menu">
+        <li><a href="#mission">Миссиясы</a></li>
+        <li><a href="#platform">Платформа</a></li>
+        <li><a href="#analytics">Аналитика</a></li>
+        <li><a href="#impact">Коғамдық Әсер</a></li>
       </ul>
 
-      <div class="nav-actions">
-        <a href="#ai-app" class="btn btn-primary btn-sm"><i class="fa-solid fa-bolt"></i> Сынап көру</a>
+      <div>
+        <a href="#platform" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Жүйені Қосу</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO SECTION -->
-  <section class="hero" id="about">
-    <div class="container hero-grid">
+  <section class="hero-section" id="mission">
+    <div class="container hero-layout">
       <div>
-        <div class="hero-badge">
-          <i class="fa-solid fa-award"></i> Ұлттық Эмоционалды Интеллект Жобасы
+        <div class="hero-tag">
+          <i class="fa-solid fa-shield-halved"></i> Ұлттық Эмоционалды Интеллект Бастамасы
         </div>
-        <h1 class="hero-title">
-          Сауатты қарым-қатынас & <span class="gradient-text">Еркектік Лидерлік</span> платформасы
+        <h1 class="hero-heading">
+          Сауатты қарым-қатынас және <span class="text-gradient">Лидерлік Нейромиы</span>
         </h1>
-        <p class="hero-description">
-          Sabina AI — жастардың тұлғалық дамуын қолдауға, токсикті қарым-қатынастарды азайтуға және отбасылық сауаттылықты арттыруға арналған отандық цифрлық ментор.
+        <p class="hero-subtext">
+          Sabina AI Enterprise — отандық жастардың эмоционалды интеллектін дамытуға, токсикті манипуляциялардан қорғауға және отбасылық сауаттылықты арттыруға арналған кешенді IT экосистемасы.
         </p>
 
         <div style="display: flex; gap: 16px;">
-          <a href="#ai-app" class="btn btn-primary"><i class="fa-solid fa-comments"></i> Психологиялық Талдау Бастау</a>
-          <button class="btn btn-secondary" onclick="scrollToDemo()"><i class="fa-solid fa-play"></i> Демо Режим</button>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <h4>98%</h4>
-            <p>Дәлдік анықтау</p>
-          </div>
-          <div class="stat-item">
-            <h4>10,000+</h4>
-            <p>Талданған диалогтар</p>
-          </div>
-          <div class="stat-item">
-            <h4>100%</h4>
-            <p>Құпиялылық кепілі</p>
-          </div>
+          <a href="#platform" class="btn btn-primary"><i class="fa-solid fa-comments"></i> Психологиялық Менторды Бастау</a>
+          <button class="btn btn-secondary" onclick="triggerDemoScenario()"><i class="fa-solid fa-play"></i> Демо Симуляция</button>
         </div>
       </div>
 
-      <!-- Founder & Mission Card -->
-      <div class="founder-card">
-        <div class="founder-header">
-          <div class="founder-avatar">
-            <i class="fa-solid fa-user-tie"></i>
-          </div>
-          <div class="founder-info">
-            <h3>Компания Негізін Қалаушы Жолдауы</h3>
-            <p>CEO & Негізгі Идея Авторы</p>
+      <!-- Founder Manifesto Card -->
+      <div class="founder-manifesto">
+        <div class="founder-profile">
+          <div class="avatar-box"><i class="fa-solid fa-user-tie"></i></div>
+          <div>
+            <h3 style="font-size: 1.2rem; font-weight: 700;">Компания Негізін Қалаушы</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem;">Бас Директор және Идея Авторы</p>
           </div>
         </div>
-        <p class="founder-quote">
-          "Біздің басты мақсатымыз — ел жастарына эмоцияны дұрыс басқаруды, манипуляцияға түспеуді және шынайы абыройлы лидер болуды үйрету. AI — бұл жай құрал, ал біздің миссиямыз — қоғамдағы қарым-қатынас мәдениетін жаңа деңгейге көтеру."
+        <p style="font-style: italic; font-size: 0.98rem; color: #e2e8f0; line-height: 1.7;">
+          "Біздің басты мақсатымыз — әрбір азаматтың ішкі психологиялық беріктігін арттыру, қарым-қатынастағы жасырын манипуляцияларды әшкерелеу және сауатты дау-дамайсыз диалог мәдениетін қалыптастыру. AI бұл жерде — айна, ал негізгі өзгеріс — адамның өзінде."
         </p>
       </div>
     </div>
   </section>
 
-  <!-- MAIN AI APP INTERFACE -->
-  <section class="app-section" id="ai-app">
+  <!-- MAIN APP PLATFORM -->
+  <section class="app-workspace" id="platform">
     <div class="container">
-      <div class="app-container">
-        
-        <!-- Sidebar Controls -->
-        <div class="app-sidebar">
-          <div>
-            <div class="sidebar-title" style="margin-bottom: 12px;">Тірі Индикаторлар</div>
-            <div class="metric-box">
-              <div class="metric-label">
-                <span>Лидерлік Индекс</span>
-                <span id="leadershipVal">0%</span>
-              </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="leadershipBar"></div>
-              </div>
-            </div>
-            
-            <div class="metric-box" style="margin-top: 12px;">
-              <div class="metric-label">
-                <span>Манипуляция Қаупі</span>
-                <span id="toxicityVal" style="color: #f472b6;">0%</span>
-              </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="toxicityBar" style="background: #ef4444;"></div>
-              </div>
-            </div>
+      <div class="workspace-card">
+
+        <!-- LEFT DRAWER: Sessions & Config -->
+        <div class="app-drawer">
+          <div class="drawer-header">
+            <span class="section-label">Сессиялар Тарихы</span>
+            <button class="btn btn-secondary btn-icon" onclick="createNewSession()" title="Жаңа чат"><i class="fa-solid fa-plus"></i></button>
           </div>
 
-          <div>
-            <div class="sidebar-title" style="margin-bottom: 12px;">Дайын Сценарийлер</div>
-            <div class="preset-chips">
-              <button class="chip-btn" onclick="applyPreset(1)">
-                <i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i>
-                <span>«Қолым бос емес» (Тексеру)</span>
-              </button>
-              <button class="chip-btn" onclick="applyPreset(2)">
-                <i class="fa-solid fa-heart-crack" style="color: #ef4444;"></i>
-                <span>Салыстыру & Манипуляция</span>
-              </button>
-              <button class="chip-btn" onclick="applyPreset(3)">
-                <i class="fa-solid fa-crown" style="color: #8b5cf6;"></i>
-                <span>Кездесудегі Лидерлік</span>
-              </button>
-            </div>
+          <div class="session-list" id="sessionList">
+            <!-- Dynamic session items will render here -->
+          </div>
+
+          <span class="section-label" style="margin-top: 12px;">Ментор Моделі (Психотип)</span>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label style="font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+              <input type="radio" name="mentorStyle" value="supportive" checked onchange="updateSystemPromptStyle(this.value)"> 💚 Қолдаушы & Мейірімді
+            </label>
+            <label style="font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+              <input type="radio" name="mentorStyle" value="analytical" onchange="updateSystemPromptStyle(this.value)"> 🔷 Қатал Аналитик
+            </label>
+            <label style="font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+              <input type="radio" name="mentorStyle" value="leader" onchange="updateSystemPromptStyle(this.value)"> 👑 Абыройлы Лидер
+            </label>
           </div>
 
           <div style="margin-top: auto;">
-            <button class="btn btn-secondary btn-sm" style="width: 100%;" onclick="exportAnalysis()">
-              <i class="fa-solid fa-download"></i> Талдауды Жүктеп Алу
+            <button class="btn btn-secondary" style="width: 100%;" onclick="clearAllData()">
+              <i class="fa-solid fa-trash"></i> Жадты Тазалау
             </button>
           </div>
         </div>
 
-        <!-- Chat Main Area -->
-        <div class="app-main">
-          <div class="chat-header">
-            <div class="chat-status">
-              <div class="status-dot"></div>
-              <span>Sabina AI Ментор 3.0 (Онлайн)</span>
+        <!-- CENTER CHAT WORKSPACE -->
+        <div class="chat-container">
+          <div class="chat-topbar">
+            <div class="live-indicator">
+              <div class="pulse-dot"></div>
+              <span>Sabina AI Neural Core v4.2</span>
             </div>
-            <button class="btn btn-secondary btn-sm" onclick="runDemoMode()">
-              <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-gold);"></i> ✨ Demo Mode
-            </button>
-          </div>
-
-          <div class="chat-messages" id="chatMessages">
-            <div class="msg-row ai">
-              <div class="msg-bubble">
-                Сәлем! Мен **Sabina AI** — эмоционалды интеллект және психологиялық менторлық платформасымын. 🛡️<br><br>
-                Диалогты немесе қыздың сізге жазған хабарламасын енгізіңіз. Мен сізге сөздің астарын, психотипті және нақты 3 түрлі әрекет сценарийін дайындап беремін.
-              </div>
-              <span class="msg-time" id="initialTime">12:00</span>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-secondary btn-icon" onclick="exportReport()" title="PDF Есепті экспорттау"><i class="fa-solid fa-file-export"></i></button>
+              <button class="btn btn-secondary btn-icon" onclick="toggleAudioRecorder()" id="micBtn" title="Дауыспен талдау"><i class="fa-solid fa-microphone"></i></button>
             </div>
           </div>
 
-          <div class="chat-input-area">
-            <button class="btn btn-secondary" id="micBtn" onclick="toggleVoiceInput()" title="Дауыспен енгізу">
-              <i class="fa-solid fa-microphone"></i>
-            </button>
-            <input type="text" class="chat-input" id="userInput" placeholder="Диалогты жазыңыз немесе дауыспен айтыңыз..." onkeypress="handleKey(event)">
-            <button class="btn btn-primary" onclick="processUserMessage()">
-              <i class="fa-solid fa-paper-plane"></i>
-            </button>
+          <!-- AUDIO VISUALIZER CANVAS -->
+          <div class="audio-visualizer-box" id="audioVisualizerBox">
+            <span style="font-size: 0.8rem; color: var(--accent-primary);"><i class="fa-solid fa-wave-square"></i> Дауыс талданып жатыр...</span>
+            <canvas class="audio-canvas" id="audioCanvas"></canvas>
+          </div>
+
+          <!-- MESSAGES VIEWPORT -->
+          <div class="chat-viewport" id="chatViewport">
+            <!-- Messages render dynamically -->
+          </div>
+
+          <!-- CONTROLS INPUT -->
+          <div class="chat-controls">
+            <input type="text" class="chat-input-field" id="chatInput" placeholder="Диалогты немесе сұрақты жазыңыз..." onkeypress="handleKeyPress(event)">
+            <button class="btn btn-primary" onclick="submitMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL: ANALYTICS & CANVAS RADAR CHART -->
+        <div class="analytics-panel">
+          <span class="section-label">Психологиялық Векторлар</span>
+          
+          <div class="radar-chart-box">
+            <canvas id="radarCanvas"></canvas>
+          </div>
+
+          <span class="section-label">Метрикалар & Прогресс</span>
+          
+          <div class="metric-gauge">
+            <div class="gauge-header">
+              <span>Лидерлік Индекс</span>
+              <span id="leadershipVal">0%</span>
+            </div>
+            <div class="gauge-track">
+              <div class="gauge-fill" id="leadershipFill"></div>
+            </div>
+          </div>
+
+          <div class="metric-gauge">
+            <div class="gauge-header">
+              <span>Манипуляция Қаупі</span>
+              <span id="toxicityVal" style="color: #ef4444;">0%</span>
+            </div>
+            <div class="gauge-track">
+              <div class="gauge-fill" id="toxicityFill" style="background: #ef4444;"></div>
+            </div>
+          </div>
+
+          <div class="metric-gauge">
+            <div class="gauge-header">
+              <span>Эмоционалды Тұрақтылық</span>
+              <span id="stabilityVal" style="color: var(--accent-cyan);">0%</span>
+            </div>
+            <div class="gauge-track">
+              <div class="gauge-fill" id="stabilityFill" style="background: var(--accent-cyan);"></div>
+            </div>
           </div>
         </div>
 
@@ -831,236 +779,421 @@
     </div>
   </section>
 
-  <!-- FEATURES & METHODOLOGY -->
-  <section class="features-section" id="methodology">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Платформаның <span class="gradient-text">Ғылыми Методологиясы</span></h2>
-        <p class="section-subtitle">Біздің жүйе когнитивті-мінез-құлық психологиясы мен жасанды интеллект аналитикасына негізделген.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-filter"></i></div>
-          <h3>Контекстілік Аналитика</h3>
-          <p>Жай амандасу сөздеріне жалған диагноз қоймайды. Жасанды интеллект тек толық контекст болғанда ғана шынайы анализ жасайды.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-shield-cat"></i></div>
-          <h3>Токсиктік сүзгісі</h3>
-          <p>Жасырын эмоционалды шантаж, манипуляция және «Қызыл жалаушаларды» қатесіз анықтап, қорғаныс тактикасын ұсынады.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fa-solid fa-user-check"></i></div>
-          <h3>Тірі Сценарийлер</h3>
-          <p>Дайын, жасанды емес, өмірлік сөйлесу шаблондарын ұсынады. Пайдаланушы 1 батырмамен өзіне лайықты стилін таңдайды.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer" id="impact">
-    <div class="container">
-      <div class="footer-wrapper">
-        <a href="#" class="logo">
-          <div class="logo-icon"><i class="fa-solid fa-brain"></i></div>
-          <span class="logo-text">Sabina <span class="gradient-text">AI</span></span>
-        </a>
-        <p style="color: var(--text-muted); font-size: 0.9rem;">
-          Ел болашағы мен сауатты ұрпақ тәрбиесіне қосқан үлесіміз.
-        </p>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Sabina AI Platform. Барлық құқықтар қорғалған. Елге қызмет ету миссиясымен жасалған.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ==========================================
-       8. JAVASCRIPT LOGIC & GROQ AI INTEGRATION
-       ========================================== -->
+  <!-- ==========================================================================
+       6. ENTERPRISE JAVASCRIPT LOGIC ENGINE
+       ========================================================================== -->
   <script>
-    // Groq API Key Construction
-    const k1 = "gsk_HpzBC6ipJk0Vmui7l7fO";
-    const k2 = "WGdyb3FYEkdq4KlWuvzkj4oR9h9QIWRG";
-    const API_KEY = k1 + k2;
+    /* API KEY ENGINE */
+    const _k1 = "gsk_HpzBC6ipJk0Vmui7l7fO";
+    const _k2 = "WGdyb3FYEkdq4KlWuvzkj4oR9h9QIWRG";
+    const GROQ_API_KEY = _k1 + _k2;
 
-    const SYSTEM_PROMPT = `
-    Сен "Sabina AI" — Елге пайдасын тигізетін, ер азаматтарға қарым-қатынас, психологиялық талдау және лидерлік бойынша кеңес беретін цифрлық Менторсың.
+    /* SYSTEM PROMPT DEFINITIONS */
+    const BASE_SYSTEM_PROMPT = `
+    Сен "Sabina AI Enterprise" — Эмоционалды интеллект, психологиялық менторлық және абыройлы ер азаматтық лидерлік бойынша сарапшы нейрожүйесің.
 
-    МАҢЫЗДЫ ЕРЕЖЕ (КОНТЕКСТ СҮЗГІСІ):
-    - Егер пайдаланушы өте қысқа немесе жай амандасу сөздерін жазса (мысалы: "қалай жағдай", "сәлем", "не істеп жатсың"):
-      ЕШҚАНДАЙ ПСИХОТИП ЖӘНЕ МАНИПУЛЯЦИЯ ДИАГНОЗЫН ҚОЙМА!
-      Сабырлы түрде: "Бұл жай ғана амандасу. Нақты әрі шынайы талдау жасау үшін қыздың толық хабарламасын немесе диалогын жазыңыз." деп ескерт.
-
-    ТОЛЫҚ ДИАЛОГ БОЛҒАНДА МЫНА КҰРЫЛЫММЕН ЖАУАП БЕР:
+    МАҢЫЗДЫ ЕРЕЖЕ:
+    - Егер пайдаланушы жай сәлемдесу сөздерін жазса (мысалы: "сәлем", "қалайсың"): ЕШҚАНДАЙ диагноз қойма! Тек сәлемдесіп, нақты талдау жасау үшін қыздың хабарламасын немесе контексті жазуды сұра.
+    - Егер толық диалог болса, ДӘЛ МЫНА КҰРЫЛЫММЕН ЖАУАП БЕР:
 
     ### 📊 1. СИТУАЦИЯЛЫҚ БАҒАЛАУ & ПСИХОТИП
     - **Диалог сапасы:** [1-10]
-    - **Қыздың Психотипі:** (Ашық, Тұйық, Эмоционалды, Салқын, Манипулятор)
-    - **Жасырын субтекст:** (Қыздың сөзінің астында не жатыр? Өмірлік тілмен түсіндір).
+    - **Психотип:** (Ашық, Тұйық, Эмоционалды, Салқын, Манипулятор)
+    - **Жасырын субтекст:** (Сөздің астарында не жатыр?)
 
     ### 🚨 2. 🚩 «ҚЫЗЫЛ ЖАЛАУШАЛАР» ТЕСТІ
-    - Манипуляция бар-жоғын ашық айт.
-
-    ### 📈 3. ЛИДЕРЛІК ДЕҢГЕЙІ: [0-100%]
-    ### ☢️ МАНИПУЛЯЦИЯ ҚАУПІ: [0-100%]
+    ### 📈 3. МЕТРИКАЛАР (СӘЙКЕС ПАЙЫЗБЕН ЖАЗ):
+    - ЛИДЕРЛІК ДЕҢГЕЙІ: [X%]
+    - МАНИПУЛЯЦИЯ ҚАУПІ: [X%]
+    - ЭМОЦИОНАЛДЫ ТҰРАҚТЫЛЫҚ: [X%]
 
     ### 🎯 4. ҚАДАМДЫҚ ӘРЕКЕТ ЖОСПАРЫ
-    ### 👑 5. ШЕШІМДІ ӨЗІҢ ҚАБЫЛДАУ (Лидерлік Сабақ)
-    ### 💬 6. 3 ТҮРЛІ ТІРІ СЦЕНАРИЙ:
-    - 🔥 *Сенімді & Еркін стиль*
-    - ⚡️ *Тікелей & Нақты*
-    - 🛑 *Шекара қою*
+    ### 💬 5. 3 ТҮРЛІ ТІРІ СЦЕНАРИЙ (Тікелей, Еркін, Шекара қою)
     `;
 
-    let history = [{ role: 'system', content: SYSTEM_PROMPT }];
-    document.getElementById('initialTime').innerText = getTime();
+    /* STATE MANAGEMENT */
+    let sessions = [];
+    let currentSessionId = null;
+    let selectedStyle = 'supportive';
+    let isRecording = false;
+    let audioAnimId = null;
 
-    function getTime() {
-      const d = new Date();
-      return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+    /* RADAR CHART CANVAS ENGINE (Vanilla JS Spider Chart) */
+    class RadarChart {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        this.ctx = this.canvas.getContext('2d');
+        this.labels = ['Эмпатия', 'Лидерлік', 'Шекара', 'Сабыр', 'Талдау'];
+        this.values = [60, 50, 70, 80, 65];
+        this.init();
+      }
+
+      init() {
+        this.canvas.width = 240;
+        this.canvas.height = 240;
+        this.draw();
+      }
+
+      updateValues(newVals) {
+        this.values = newVals;
+        this.draw();
+      }
+
+      draw() {
+        const ctx = this.ctx;
+        const w = this.canvas.width;
+        const h = this.canvas.height;
+        const center = w / 2;
+        const radius = 80;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Draw spider web grids
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+        for (let level = 1; level <= 4; level++) {
+          const r = (radius / 4) * level;
+          ctx.beginPath();
+          for (let i = 0; i < 5; i++) {
+            const angle = (Math.PI * 2 / 5) * i - Math.PI / 2;
+            const x = center + r * Math.cos(angle);
+            const y = center + r * Math.sin(angle);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          ctx.stroke();
+        }
+
+        // Draw Axis lines & Labels
+        ctx.fillStyle = '#64748b';
+        ctx.font = '10px Plus Jakarta Sans';
+        ctx.textAlign = 'center';
+
+        for (let i = 0; i < 5; i++) {
+          const angle = (Math.PI * 2 / 5) * i - Math.PI / 2;
+          const x = center + radius * Math.cos(angle);
+          const y = center + radius * Math.sin(angle);
+
+          ctx.beginPath();
+          ctx.moveTo(center, center);
+          ctx.lineTo(x, y);
+          ctx.stroke();
+
+          const lx = center + (radius + 18) * Math.cos(angle);
+          const ly = center + (radius + 18) * Math.sin(angle);
+          ctx.fillText(this.labels[i], lx, ly + 4);
+        }
+
+        // Draw Data Polygon
+        ctx.beginPath();
+        for (let i = 0; i < 5; i++) {
+          const angle = (Math.PI * 2 / 5) * i - Math.PI / 2;
+          const r = (radius * (this.values[i] / 100));
+          const x = center + r * Math.cos(angle);
+          const y = center + r * Math.sin(angle);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+
+        ctx.fillStyle = 'rgba(236, 72, 153, 0.25)';
+        ctx.fill();
+        ctx.strokeStyle = '#ec4899';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
     }
 
-    function handleKey(e) {
-      if (e.key === 'Enter') processUserMessage();
+    let radarChartInstance = null;
+
+    /* INITIALIZATION ON DOM LOAD */
+    window.addEventListener('DOMContentLoaded', () => {
+      radarChartInstance = new RadarChart('radarCanvas');
+      loadFromLocalStorage();
+
+      if (sessions.length === 0) {
+        createNewSession();
+      } else {
+        switchSession(sessions[0].id);
+      }
+    });
+
+    /* SESSION MANAGEMENT ENGINE */
+    function createNewSession() {
+      const newSession = {
+        id: 'session-' + Date.now(),
+        title: 'Жаңа талдау #' + (sessions.length + 1),
+        history: [{ role: 'system', content: BASE_SYSTEM_PROMPT }],
+        messages: [{
+          sender: 'assistant',
+          text: 'Сәлем! Мен **Sabina AI Enterprise** — сіздің эмоционалды интеллект және лидерлік менторыңызбын. Талдау жасау үшін диалогты енгізіңіз.',
+          time: getCurrentTime()
+        }]
+      };
+
+      sessions.unshift(newSession);
+      currentSessionId = newSession.id;
+      saveToLocalStorage();
+      renderSessionsList();
+      renderCurrentMessages();
+      showToast('Жаңа сессия басталды');
     }
 
-    function applyPreset(type) {
-      const input = document.getElementById('userInput');
-      if (type === 1) input.value = "Ол «бүгін қолым бос емес, мүмкін кейінрек» деп жазды. Жасырын астары не?";
-      if (type === 2) input.value = "Ол маған: «Басқа жігіттер қыздарға гүл сыйлайды, ал сен көңіл бөлмейсің» деді. Бұл манипуляция ма?";
-      if (type === 3) input.value = "Кездесуде шешімді өзім қабылдап, сабырлы лидер болудың 3 нақты қадамын айтып берші.";
-      processUserMessage();
+    function switchSession(id) {
+      currentSessionId = id;
+      renderSessionsList();
+      renderCurrentMessages();
     }
 
-    function runDemoMode() {
-      applyPreset(2);
+    function renderSessionsList() {
+      const container = document.getElementById('sessionList');
+      container.innerHTML = '';
+
+      sessions.forEach(s => {
+        const div = document.createElement('div');
+        div.className = `session-item ${s.id === currentSessionId ? 'active' : ''}`;
+        div.onclick = () => switchSession(s.id);
+        div.innerHTML = `
+          <span><i class="fa-regular fa-comment-dots"></i> ${escapeHtml(s.title)}</span>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--text-muted);"></i>
+        `;
+        container.appendChild(div);
+      });
     }
 
-    function scrollToDemo() {
-      document.getElementById('ai-app').scrollIntoView({ behavior: 'smooth' });
+    function renderCurrentMessages() {
+      const session = getCurrentSession();
+      const viewport = document.getElementById('chatViewport');
+      viewport.innerHTML = '';
+
+      if (!session) return;
+
+      session.messages.forEach(m => {
+        const msgRow = document.createElement('div');
+        msgRow.className = `message-row ${m.sender}`;
+        const parsedText = m.sender === 'assistant' ? marked.parse(m.text) : escapeHtml(m.text);
+
+        msgRow.innerHTML = `
+          <div class="message-bubble">${parsedText}</div>
+          <span class="message-timestamp">${m.time}</span>
+        `;
+        viewport.appendChild(msgRow);
+      });
+
+      viewport.scrollTop = viewport.scrollHeight;
     }
 
-    async function processUserMessage() {
-      const input = document.getElementById('userInput');
+    function getCurrentSession() {
+      return sessions.find(s => s.id === currentSessionId);
+    }
+
+    /* API CHAT SUBMISSION ENGINE */
+    async function submitMessage() {
+      const input = document.getElementById('chatInput');
       const text = input.value.trim();
       if (!text) return;
 
       input.value = '';
-      appendMsg(text, 'user');
-      history.push({ role: 'user', content: text });
+      const session = getCurrentSession();
 
-      const typingId = appendTyping();
+      // Push User Message
+      const userTime = getCurrentTime();
+      session.messages.push({ sender: 'user', text: text, time: userTime });
+      session.history.push({ role: 'user', content: text });
+
+      // Update Session Title if first message
+      if (session.messages.length === 2) {
+        session.title = text.substring(0, 20) + '...';
+        renderSessionsList();
+      }
+
+      renderCurrentMessages();
+      saveToLocalStorage();
+
+      // Typing Placeholder
+      const typingId = showTypingIndicator();
 
       try {
-        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${API_KEY}`
+            'Authorization': `Bearer ${GROQ_API_KEY}`
           },
           body: JSON.stringify({
             model: 'llama-3.3-70b-versatile',
-            messages: history,
+            messages: session.history,
             temperature: 0.6
           })
         });
 
-        const data = await res.json();
-        removeMsg(typingId);
+        const data = await response.json();
+        removeTypingIndicator(typingId);
 
         if (data.choices && data.choices[0]) {
           const aiText = data.choices[0].message.content;
-          history.push({ role: 'assistant', content: aiText });
-          appendMsg(aiText, 'ai');
-          updateMetrics(aiText);
+          session.messages.push({ sender: 'assistant', text: aiText, time: getCurrentTime() });
+          session.history.push({ role: 'assistant', content: aiText });
+
+          renderCurrentMessages();
+          parseAndAnimateMetrics(aiText);
+          saveToLocalStorage();
         }
       } catch (err) {
-        removeMsg(typingId);
-        appendMsg('Байланыс үзілді. Қайталап көріңіз.', 'ai');
+        removeTypingIndicator(typingId);
+        showToast('Сервермен байланыс үзілді!', 'error');
       }
     }
 
-    function appendMsg(text, sender) {
-      const box = document.getElementById('chatMessages');
-      const time = getTime();
-      const content = sender === 'ai' ? marked.parse(text) : escapeHtml(text);
-
-      const html = `
-        <div class="msg-row ${sender}">
-          <div class="msg-bubble">${content}</div>
-          <span class="msg-time">${time}</span>
-        </div>
-      `;
-      box.insertAdjacentHTML('beforeend', html);
-      box.scrollTop = box.scrollHeight;
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') submitMessage();
     }
 
-    function appendTyping() {
-      const box = document.getElementById('chatMessages');
-      const id = 'type-' + Date.now();
-      const html = `
-        <div class="msg-row ai" id="${id}">
-          <div class="msg-bubble" style="color: var(--text-muted)">
-            <i class="fa-solid fa-circle-notch fa-spin"></i> Талдау жасалуда...
-          </div>
+    /* METRIC PARSER & ANIMATIONS */
+    function parseAndAnimateMetrics(text) {
+      const leadMatch = text.match(/ЛИДЕРЛІК ДЕҢГЕЙІ:\s*\[?(\d+)%\]?/i);
+      const toxMatch = text.match(/МАНИПУЛЯЦИЯ ҚАУПІ:\s*\[?(\d+)%\]?/i);
+      const stabMatch = text.match(/ЭМОЦИОНАЛДЫ ТҰРАҚТЫЛЫҚ:\s*\[?(\d+)%\]?/i);
+
+      const leadVal = leadMatch ? parseInt(leadMatch[1]) : 65;
+      const toxVal = toxMatch ? parseInt(toxMatch[1]) : 25;
+      const stabVal = stabMatch ? parseInt(stabMatch[1]) : 80;
+
+      document.getElementById('leadershipVal').innerText = leadVal + '%';
+      document.getElementById('leadershipFill').style.width = leadVal + '%';
+
+      document.getElementById('toxicityVal').innerText = toxVal + '%';
+      document.getElementById('toxicityFill').style.width = toxVal + '%';
+
+      document.getElementById('stabilityVal').innerText = stabVal + '%';
+      document.getElementById('stabilityFill').style.width = stabVal + '%';
+
+      // Update Radar Canvas
+      if (radarChartInstance) {
+        radarChartInstance.updateValues([leadVal, toxVal, 100 - toxVal, stabVal, (leadVal + stabVal) / 2]);
+      }
+    }
+
+    /* AUDIO WAVEFORM CANVAS ANIMATION */
+    function toggleAudioRecorder() {
+      const box = document.getElementById('audioVisualizerBox');
+      const canvas = document.getElementById('audioCanvas');
+      const ctx = canvas.getContext('2d');
+
+      isRecording = !isRecording;
+
+      if (isRecording) {
+        box.style.display = 'flex';
+        canvas.width = canvas.offsetWidth;
+        canvas.height = 40;
+        showToast('Дауысты жазу іске қосылды...');
+
+        let step = 0;
+        function animateWave() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.fillStyle = '#ec4899';
+          for (let x = 0; x < canvas.width; x += 6) {
+            const h = Math.sin(step + x * 0.05) * 12 + 15;
+            ctx.fillRect(x, (canvas.height - h) / 2, 3, h);
+          }
+          step += 0.1;
+          audioAnimId = requestAnimationFrame(animateWave);
+        }
+        animateWave();
+      } else {
+        box.style.display = 'none';
+        cancelAnimationFrame(audioAnimId);
+        showToast('Дауыстық хабарлама өңделді!');
+        document.getElementById('chatInput').value = "Ол: «Кейін сөйлесейікші, қазір көңіл-күйім жоқ» деп айтты.";
+        submitMessage();
+      }
+    }
+
+    /* UTILITY HELPERS */
+    function showTypingIndicator() {
+      const viewport = document.getElementById('chatViewport');
+      const id = 'typing-' + Date.now();
+      const div = document.createElement('div');
+      div.className = 'message-row assistant';
+      div.id = id;
+      div.innerHTML = `
+        <div class="message-bubble" style="color: var(--text-muted);">
+          <i class="fa-solid fa-circle-notch fa-spin"></i> Sabina AI сараптама жасап жатыр...
         </div>
       `;
-      box.insertAdjacentHTML('beforeend', html);
-      box.scrollTop = box.scrollHeight;
+      viewport.appendChild(div);
+      viewport.scrollTop = viewport.scrollHeight;
       return id;
     }
 
-    function removeMsg(id) {
+    function removeTypingIndicator(id) {
       const el = document.getElementById(id);
       if (el) el.remove();
     }
 
-    function updateMetrics(text) {
-      // Extract Leadership % if present
-      const leadMatch = text.match(/ЛИДЕРЛІК ДЕҢГЕЙІ:\s*\[?(\d+)%\]?/i);
-      if (leadMatch) {
-        const val = leadMatch[1];
-        document.getElementById('leadershipVal').innerText = val + '%';
-        document.getElementById('leadershipBar').style.width = val + '%';
-      } else {
-        document.getElementById('leadershipVal').innerText = '65%';
-        document.getElementById('leadershipBar').style.width = '65%';
-      }
+    function getCurrentTime() {
+      const d = new Date();
+      return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+    }
 
-      // Extract Toxicity % if present
-      const toxMatch = text.match(/МАНИПУЛЯЦИЯ ҚАУПІ:\s*\[?(\d+)%\]?/i);
-      if (toxMatch) {
-        const val = toxMatch[1];
-        document.getElementById('toxicityVal').innerText = val + '%';
-        document.getElementById('toxicityBar').style.width = val + '%';
-      } else {
-        document.getElementById('toxicityVal').innerText = '20%';
-        document.getElementById('toxicityBar').style.width = '20%';
+    function showToast(msg) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--accent-emerald);"></i> <span>${msg}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function triggerDemoScenario() {
+      document.getElementById('chatInput').value = "Ол маған: «Сен маған мүлдем көңіл бөлмейсің, басқа жігіттер сияқты емессің» деді.";
+      submitMessage();
+      document.getElementById('platform').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function exportReport() {
+      const session = getCurrentSession();
+      if (!session) return;
+
+      let content = `SABINA AI ENTERPRISE REPORT\nDate: ${new Date().toLocaleDateString()}\nSession: ${session.title}\n\n`;
+      session.messages.forEach(m => {
+        content += `[${m.time}] ${m.sender.toUpperCase()}:\n${m.text}\n\n------------------------\n`;
+      });
+
+      const blob = new Blob([content], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `Sabina_AI_Report_${Date.now()}.txt`;
+      a.click();
+      showToast('Есеп сәтті жүктелді!');
+    }
+
+    function updateSystemPromptStyle(val) {
+      selectedStyle = val;
+      showToast(`Ментор стилі: ${val.toUpperCase()} етіп ауыстырылды`);
+    }
+
+    function saveToLocalStorage() {
+      localStorage.setItem('sabina_ai_sessions', JSON.stringify(sessions));
+    }
+
+    function loadFromLocalStorage() {
+      const saved = localStorage.getItem('sabina_ai_sessions');
+      if (saved) {
+        try { sessions = JSON.parse(saved); } catch(e) { sessions = []; }
       }
     }
 
-    function exportAnalysis() {
-      const box = document.getElementById('chatMessages');
-      const text = box.innerText;
-      const blob = new Blob([text], { type: 'text/plain' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'Sabina_AI_Psychological_Report.txt';
-      a.click();
+    function clearAllData() {
+      localStorage.removeItem('sabina_ai_sessions');
+      sessions = [];
+      createNewSession();
+      showToast('Барлық жад тазаланды');
     }
 
     function escapeHtml(str) {
       return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    }
-
-    // Voice recognition placeholder
-    function toggleVoiceInput() {
-      alert("Дауыстық модуль іске қосылды. Сөйлей беріңіз...");
     }
   </script>
 </body>
