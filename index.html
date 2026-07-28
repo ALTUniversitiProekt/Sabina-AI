@@ -1,863 +1,556 @@
 <!DOCTYPE html>
-<html lang="kk" class="dark">
+<html lang="kk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sabina AI Enterprise — Эмоционалды Интеллект Экосистемасы</title>
-  <meta name="description" content="Sabina AI Enterprise — Қарым-қатынас психологиясы, эмоционалды интеллект және тұлғалық лидерлікті талдаудың кешенді IT платформасы.">
+  <title>Sabina AI — Enterprise Psychological Platform</title>
   
-  <!-- Modern Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
+  <!-- Font Awesome & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Marked.js Parsing Engine -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       1. GLOBAL SYSTEM DESIGN VARIABLES & THEME ENGINE
-       ========================================================================== */
     :root {
-      --bg-base: #020617;
-      --bg-surface-1: #0f172a;
-      --bg-surface-2: #1e293b;
-      --bg-surface-3: #334155;
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.7);
+      --bg-glass: rgba(255, 255, 255, 0.03);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(236, 72, 153, 0.3);
       
       --accent-primary: #ec4899;
-      --accent-primary-hover: #db2777;
       --accent-secondary: #8b5cf6;
-      --accent-tertiary: #f59e0b;
-      --accent-cyan: #06b6d4;
-      --accent-emerald: #10b981;
+      --accent-gradient: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
       
-      --grad-primary: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #8b5cf6 100%);
-      --grad-dark: linear-gradient(180deg, rgba(15, 23, 42, 0.9) 0%, rgba(2, 6, 23, 0.95) 100%);
-      --grad-glow: radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
-
-      --text-heading: #f8fafc;
-      --text-body: #cbd5e1;
-      --text-muted: #64748b;
-      --text-highlight: #ffffff;
-
-      --border-thin: 1px solid rgba(255, 255, 255, 0.08);
-      --border-active: 1px solid rgba(236, 72, 153, 0.4);
-      --border-glow: 0 0 15px rgba(236, 72, 153, 0.2);
-
-      --radius-xs: 6px;
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-full: 9999px;
-
-      --shadow-elevation-low: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-      --shadow-elevation-high: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
-
-      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      
+      --sidebar-width: 320px;
+      --right-panel-width: 340px;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
-      background-color: var(--bg-base);
-      color: var(--text-body);
-      min-height: 100vh;
-      overflow-x: hidden;
-      line-height: 1.6;
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
-        radial-gradient(at 50% 100%, rgba(6, 182, 212, 0.05) 0px, transparent 60%);
-      background-attachment: fixed;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
     }
 
-    /* Custom Scrollbars */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg-base);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--bg-surface-3);
-      border-radius: var(--radius-full);
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-primary);
+    /* GLASS EFFECT */
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-color);
     }
 
-    /* ==========================================================================
-       2. TYPOGRAPHY & UTILITIES
-       ========================================================================== */
-    h1, h2, h3, h4, .heading-font {
-      font-family: 'Space Grotesk', sans-serif;
-      color: var(--text-heading);
-      letter-spacing: -0.02em;
+    /* LEFT SIDEBAR */
+    .sidebar {
+      width: var(--sidebar-width);
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border-color);
+      z-index: 10;
     }
 
-    .text-gradient {
-      background: var(--grad-primary);
+    .brand-header {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      background: var(--accent-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    /* UI Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 24px;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      font-size: 0.9rem;
+    .action-btn {
+      margin: 15px;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
       cursor: pointer;
-      transition: all var(--transition-normal);
-      border: none;
-      text-decoration: none;
-      outline: none;
-      user-select: none;
-    }
-
-    .btn-primary {
-      background: var(--grad-primary);
-      color: #ffffff;
-      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.35);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.04);
-      border: var(--border-thin);
-      color: var(--text-heading);
-      backdrop-filter: blur(12px);
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .btn-icon {
-      width: 42px;
-      height: 42px;
-      padding: 0;
-      border-radius: var(--radius-sm);
-    }
-
-    /* Toast Notification */
-    #toastContainer {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 9999;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       gap: 10px;
-    }
-
-    .toast {
-      background: var(--bg-surface-2);
-      border: var(--border-thin);
-      border-left: 4px solid var(--accent-primary);
-      color: var(--text-heading);
-      padding: 16px 20px;
-      border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-elevation-high);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 300px;
-      animation: toastIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
-    }
-
-    @keyframes toastIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    /* ==========================================================================
-       3. NAVIGATION BAR
-       ========================================================================== */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(2, 6, 23, 0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: var(--border-thin);
-      padding: 18px 0;
-    }
-
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-    }
-
-    .brand-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: var(--radius-sm);
-      background: var(--grad-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.3rem;
-      box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
-    }
-
-    .brand-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text-heading);
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-menu a {
-      color: var(--text-muted);
-      text-decoration: none;
       font-weight: 600;
-      font-size: 0.92rem;
-      transition: color var(--transition-fast);
+      transition: all 0.2s ease;
     }
 
-    .nav-menu a:hover {
-      color: var(--accent-primary);
-    }
-
-    /* ==========================================================================
-       4. HERO & PLATFORM MISSION
-       ========================================================================== */
-    .hero-section {
-      padding: 170px 0 100px 0;
-      position: relative;
-    }
-
-    .hero-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      border-radius: var(--radius-full);
-      background: rgba(245, 158, 11, 0.08);
-      border: 1px solid rgba(245, 158, 11, 0.25);
-      color: var(--accent-tertiary);
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 24px;
-    }
-
-    .hero-heading {
-      font-size: 3.8rem;
-      line-height: 1.1;
-      font-weight: 800;
-      margin-bottom: 28px;
-    }
-
-    .hero-subtext {
-      font-size: 1.18rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-      max-width: 580px;
-    }
-
-    .founder-manifesto {
-      background: var(--bg-surface-1);
-      border: var(--border-thin);
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      position: relative;
-      box-shadow: var(--shadow-elevation-high);
-      backdrop-filter: blur(16px);
-      overflow: hidden;
-    }
-
-    .founder-manifesto::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--grad-primary);
-    }
-
-    .founder-profile {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-
-    .avatar-box {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--grad-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      color: white;
-    }
-
-    /* ==========================================================================
-       5. MAIN ENTERPRISE WORKSPACE (APPLICATION)
-       ========================================================================== */
-    .app-workspace {
-      padding: 60px 0 120px 0;
-    }
-
-    .workspace-card {
-      background: var(--bg-surface-1);
-      border: var(--border-thin);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-elevation-high);
-      display: grid;
-      grid-template-columns: 340px 1fr 320px;
-      min-height: 780px;
-      overflow: hidden;
-    }
-
-    /* Left Drawer: Session History & Settings */
-    .app-drawer {
-      background: rgba(10, 15, 29, 0.95);
-      border-right: var(--border-thin);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .drawer-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: var(--text-muted);
-      font-weight: 700;
+    .action-btn:hover {
+      background: var(--accent-gradient);
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
     }
 
     .session-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 240px;
+      flex: 1;
       overflow-y: auto;
+      padding: 0 15px;
     }
 
     .session-item {
-      padding: 12px 14px;
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.02);
-      border: var(--border-thin);
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin-bottom: 8px;
       cursor: pointer;
-      font-size: 0.85rem;
-      transition: all var(--transition-fast);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
     }
 
     .session-item:hover, .session-item.active {
-      background: rgba(236, 72, 153, 0.12);
-      border-color: var(--accent-primary);
-      color: white;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
     }
 
-    /* Center Section: Main Interactive Chat */
-    .chat-container {
+    .session-item.active {
+      border-left: 3px solid var(--accent-primary);
+    }
+
+    /* MAIN CHAT AREA */
+    .main-chat {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      background: rgba(15, 23, 42, 0.4);
+      position: relative;
     }
 
-    .chat-topbar {
-      padding: 20px 28px;
-      border-bottom: var(--border-thin);
+    .chat-header {
+      padding: 18px 25px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(15, 23, 42, 0.8);
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .live-indicator {
+    .mentor-styles {
       display: flex;
-      align-items: center;
       gap: 10px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--accent-emerald);
     }
 
-    .pulse-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--accent-emerald);
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--accent-emerald);
-      animation: pulse 2s infinite;
+    .style-chip {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    .style-chip.active, .style-chip:hover {
+      border-color: var(--accent-primary);
+      color: var(--text-main);
+      background: rgba(236, 72, 153, 0.1);
     }
 
     .chat-viewport {
       flex: 1;
-      padding: 32px;
       overflow-y: auto;
+      padding: 25px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
-      max-height: 540px;
+      gap: 20px;
     }
 
     .message-row {
       display: flex;
-      flex-direction: column;
-      max-width: 85%;
-      animation: messageSlide 0.3s ease-out;
+      gap: 15px;
+      max-width: 80%;
     }
 
-    @keyframes messageSlide {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+    .message-row.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
     }
 
-    .message-row.user { align-self: flex-end; }
-    .message-row.assistant { align-self: flex-start; }
+    .message-row.assistant {
+      align-self: flex-start;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .avatar.user {
+      background: #3b82f6;
+    }
+
+    .avatar.assistant {
+      background: var(--accent-gradient);
+    }
 
     .message-bubble {
-      padding: 18px 24px;
-      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      border-radius: 14px;
       font-size: 0.95rem;
-      line-height: 1.65;
+      line-height: 1.6;
+      position: relative;
     }
 
     .message-row.user .message-bubble {
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: #ffffff;
-      border-bottom-right-radius: 4px;
+      background: #2563eb;
+      color: #fff;
+      border-top-right-radius: 2px;
     }
 
     .message-row.assistant .message-bubble {
-      background: var(--bg-surface-2);
-      border: var(--border-thin);
-      color: var(--text-body);
-      border-bottom-left-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-top-left-radius: 2px;
     }
 
-    .message-timestamp {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-      align-self: flex-end;
-    }
-
-    /* Audio Waveform Canvas Box */
-    .audio-visualizer-box {
-      display: none;
-      padding: 12px 20px;
-      background: rgba(2, 6, 23, 0.9);
-      border-top: var(--border-thin);
-      align-items: center;
-      gap: 16px;
-    }
-
-    .audio-canvas {
-      flex: 1;
-      height: 40px;
-      background: transparent;
-    }
-
-    .chat-controls {
-      padding: 24px;
-      border-top: var(--border-thin);
-      background: rgba(10, 15, 29, 0.9);
-      display: flex;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .chat-input-field {
-      flex: 1;
-      background: var(--bg-surface-1);
-      border: var(--border-thin);
-      border-radius: var(--radius-md);
-      padding: 16px 22px;
-      color: white;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color var(--transition-fast);
-    }
-
-    .chat-input-field:focus {
-      border-color: var(--accent-primary);
-      box-shadow: var(--border-glow);
-    }
-
-    /* Right Section: Analytics Panel & Canvas Radar Chart */
-    .analytics-panel {
-      background: rgba(10, 15, 29, 0.95);
-      border-left: var(--border-thin);
-      padding: 24px;
+    .input-area {
+      padding: 20px;
+      border-top: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 10px;
     }
 
-    .radar-chart-box {
+    .input-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .input-box textarea {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      resize: none;
+      height: 24px;
+      max-height: 120px;
+      font-size: 0.95rem;
+    }
+
+    .icon-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      color: var(--accent-primary);
+    }
+
+    .send-btn {
+      background: var(--accent-gradient);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .send-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* RIGHT METRICS PANEL */
+    .metrics-panel {
+      width: var(--right-panel-width);
+      border-left: 1px solid var(--border-color);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      overflow-y: auto;
+    }
+
+    .panel-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .gauge-card {
+      padding: 15px;
+      border-radius: 12px;
       background: rgba(255, 255, 255, 0.02);
-      border: var(--border-thin);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      text-align: center;
-    }
-
-    canvas#radarCanvas {
-      width: 100% !important;
-      max-width: 240px;
-      height: 240px !important;
-      margin: 0 auto;
-    }
-
-    .metric-gauge {
-      margin-top: 8px;
+      border: 1px solid var(--border-color);
     }
 
     .gauge-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
-      margin-bottom: 6px;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
     }
 
-    .gauge-track {
+    .gauge-bar {
       height: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-full);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
       overflow: hidden;
+      position: relative;
     }
 
     .gauge-fill {
       height: 100%;
       width: 0%;
-      background: var(--grad-primary);
+      background: var(--accent-gradient);
       transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Responsive Adaptation */
-    @media (max-width: 1200px) {
-      .workspace-card { grid-template-columns: 1fr; }
-      .app-drawer, .analytics-panel { display: none; }
-      .hero-layout { grid-template-columns: 1fr; }
+    .radar-box {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* AUDIO VISUALIZER */
+    .audio-visualizer {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      display: none;
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .toast {
+      background: #1f2937;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- TOAST SYSTEM CONTAINER -->
-  <div id="toastContainer"></div>
-
-  <!-- NAVIGATION BAR -->
-  <nav class="navbar">
-    <div class="container nav-wrapper">
-      <a href="#" class="brand-logo">
-        <div class="brand-badge"><i class="fa-solid fa-brain"></i></div>
-        <span class="brand-title">Sabina <span class="text-gradient">AI Enterprise</span></span>
-      </a>
-
-      <ul class="nav-menu">
-        <li><a href="#mission">Миссиясы</a></li>
-        <li><a href="#platform">Платформа</a></li>
-        <li><a href="#analytics">Аналитика</a></li>
-        <li><a href="#impact">Коғамдық Әсер</a></li>
-      </ul>
-
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar glass">
+    <div class="brand-header">
+      <div class="brand-icon"><i class="fa-solid fa-brain"></i></div>
       <div>
-        <a href="#platform" class="btn btn-primary"><i class="fa-solid fa-bolt"></i> Жүйені Қосу</a>
+        <div class="brand-title">SABINA AI</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted);">Enterprise Psychological System</div>
       </div>
     </div>
-  </nav>
 
-  <!-- HERO SECTION -->
-  <section class="hero-section" id="mission">
-    <div class="container hero-layout">
+    <button class="action-btn" onclick="createNewSession()">
+      <i class="fa-solid fa-plus"></i> Жаңа Анализ
+    </button>
+
+    <div class="session-list" id="sessionList">
+      <!-- Dynamically populated -->
+    </div>
+
+    <div style="padding: 15px; border-top: 1px solid var(--border-color);">
+      <button class="action-btn" style="margin: 0; width: 100%; font-size: 0.85rem;" onclick="clearAllData()">
+        <i class="fa-solid fa-trash"></i> Тарихты тазалау
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CHAT -->
+  <main class="main-chat">
+    <header class="chat-header glass">
       <div>
-        <div class="hero-tag">
-          <i class="fa-solid fa-shield-halved"></i> Ұлттық Эмоционалды Интеллект Бастамасы
-        </div>
-        <h1 class="hero-heading">
-          Сауатты қарым-қатынас және <span class="text-gradient">Лидерлік Нейромиы</span>
-        </h1>
-        <p class="hero-subtext">
-          Sabina AI Enterprise — отандық жастардың эмоционалды интеллектін дамытуға, токсикті манипуляциялардан қорғауға және отбасылық сауаттылықты арттыруға арналған кешенді IT экосистемасы.
-        </p>
-
-        <div style="display: flex; gap: 16px;">
-          <a href="#platform" class="btn btn-primary"><i class="fa-solid fa-comments"></i> Психологиялық Менторды Бастау</a>
-          <button class="btn btn-secondary" onclick="triggerDemoScenario()"><i class="fa-solid fa-play"></i> Демо Симуляция</button>
-        </div>
+        <h3 id="chatTitle" style="font-size: 1rem;">Психологиялық Аналитикалық Сессия</h3>
+        <p style="font-size: 0.75rem; color: var(--text-muted);">Статус: Бета-Режимде Белсенді</p>
       </div>
 
-      <!-- Founder Manifesto Card -->
-      <div class="founder-manifesto">
-        <div class="founder-profile">
-          <div class="avatar-box"><i class="fa-solid fa-user-tie"></i></div>
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 700;">Компания Негізін Қалаушы</h3>
-            <p style="color: var(--text-muted); font-size: 0.88rem;">Бас Директор және Идея Авторы</p>
-          </div>
-        </div>
-        <p style="font-style: italic; font-size: 0.98rem; color: #e2e8f0; line-height: 1.7;">
-          "Біздің басты мақсатымыз — әрбір азаматтың ішкі психологиялық беріктігін арттыру, қарым-қатынастағы жасырын манипуляцияларды әшкерелеу және сауатты дау-дамайсыз диалог мәдениетін қалыптастыру. AI бұл жерде — айна, ал негізгі өзгеріс — адамның өзінде."
-        </p>
+      <div class="mentor-styles">
+        <div class="style-chip active" onclick="updateSystemPromptStyle('empathic')">Эмпатиялық</div>
+        <div class="style-chip" onclick="updateSystemPromptStyle('analytical')">Аналитикалық</div>
+        <div class="style-chip" onclick="updateSystemPromptStyle('leader')">Лидерлік Тон</div>
+      </div>
+    </header>
+
+    <div class="chat-viewport" id="chatViewport">
+      <!-- Messages rendered dynamically -->
+    </div>
+
+    <div class="input-area glass">
+      <div class="audio-visualizer" id="audioVisualizerBox">
+        <canvas id="audioCanvas" height="40"></canvas>
+      </div>
+
+      <div class="input-box">
+        <button class="icon-btn" id="micBtn" onclick="toggleAudioRecorder()"><i class="fa-solid fa-microphone"></i></button>
+        <textarea id="chatInput" placeholder="Хабарламаңызды жазыңыз немесе ситуацияны сипаттаңыз..." onkeypress="handleKeyPress(event)"></textarea>
+        <button class="icon-btn" onclick="triggerDemoScenario()" title="Демо сценарийді іске қосу"><i class="fa-solid fa-wand-magic-sparkles"></i></button>
+        <button class="send-btn" onclick="submitMessage()"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- MAIN APP PLATFORM -->
-  <section class="app-workspace" id="platform">
-    <div class="container">
-      <div class="workspace-card">
+  <!-- RIGHT METRICS PANEL -->
+  <aside class="metrics-panel glass">
+    <div class="panel-title">Психометриялық Картограмма</div>
 
-        <!-- LEFT DRAWER: Sessions & Config -->
-        <div class="app-drawer">
-          <div class="drawer-header">
-            <span class="section-label">Сессиялар Тарихы</span>
-            <button class="btn btn-secondary btn-icon" onclick="createNewSession()" title="Жаңа чат"><i class="fa-solid fa-plus"></i></button>
-          </div>
+    <div class="radar-box">
+      <canvas id="radarCanvas" width="220" height="220"></canvas>
+    </div>
 
-          <div class="session-list" id="sessionList">
-            <!-- Dynamic session items will render here -->
-          </div>
+    <div class="panel-title" style="margin-top: 10px;">Детекторлар</div>
 
-          <span class="section-label" style="margin-top: 12px;">Ментор Моделі (Психотип)</span>
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <label style="font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="mentorStyle" value="supportive" checked onchange="updateSystemPromptStyle(this.value)"> 💚 Қолдаушы & Мейірімді
-            </label>
-            <label style="font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="mentorStyle" value="analytical" onchange="updateSystemPromptStyle(this.value)"> 🔷 Қатал Аналитик
-            </label>
-            <label style="font-size: 0.82rem; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-              <input type="radio" name="mentorStyle" value="leader" onchange="updateSystemPromptStyle(this.value)"> 👑 Абыройлы Лидер
-            </label>
-          </div>
-
-          <div style="margin-top: auto;">
-            <button class="btn btn-secondary" style="width: 100%;" onclick="clearAllData()">
-              <i class="fa-solid fa-trash"></i> Жадты Тазалау
-            </button>
-          </div>
-        </div>
-
-        <!-- CENTER CHAT WORKSPACE -->
-        <div class="chat-container">
-          <div class="chat-topbar">
-            <div class="live-indicator">
-              <div class="pulse-dot"></div>
-              <span>Sabina AI Neural Core v4.2</span>
-            </div>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn btn-secondary btn-icon" onclick="exportReport()" title="PDF Есепті экспорттау"><i class="fa-solid fa-file-export"></i></button>
-              <button class="btn btn-secondary btn-icon" onclick="toggleAudioRecorder()" id="micBtn" title="Дауыспен талдау"><i class="fa-solid fa-microphone"></i></button>
-            </div>
-          </div>
-
-          <!-- AUDIO VISUALIZER CANVAS -->
-          <div class="audio-visualizer-box" id="audioVisualizerBox">
-            <span style="font-size: 0.8rem; color: var(--accent-primary);"><i class="fa-solid fa-wave-square"></i> Дауыс талданып жатыр...</span>
-            <canvas class="audio-canvas" id="audioCanvas"></canvas>
-          </div>
-
-          <!-- MESSAGES VIEWPORT -->
-          <div class="chat-viewport" id="chatViewport">
-            <!-- Messages render dynamically -->
-          </div>
-
-          <!-- CONTROLS INPUT -->
-          <div class="chat-controls">
-            <input type="text" class="chat-input-field" id="chatInput" placeholder="Диалогты немесе сұрақты жазыңыз..." onkeypress="handleKeyPress(event)">
-            <button class="btn btn-primary" onclick="submitMessage()"><i class="fa-solid fa-paper-plane"></i></button>
-          </div>
-        </div>
-
-        <!-- RIGHT PANEL: ANALYTICS & CANVAS RADAR CHART -->
-        <div class="analytics-panel">
-          <span class="section-label">Психологиялық Векторлар</span>
-          
-          <div class="radar-chart-box">
-            <canvas id="radarCanvas"></canvas>
-          </div>
-
-          <span class="section-label">Метрикалар & Прогресс</span>
-          
-          <div class="metric-gauge">
-            <div class="gauge-header">
-              <span>Лидерлік Индекс</span>
-              <span id="leadershipVal">0%</span>
-            </div>
-            <div class="gauge-track">
-              <div class="gauge-fill" id="leadershipFill"></div>
-            </div>
-          </div>
-
-          <div class="metric-gauge">
-            <div class="gauge-header">
-              <span>Манипуляция Қаупі</span>
-              <span id="toxicityVal" style="color: #ef4444;">0%</span>
-            </div>
-            <div class="gauge-track">
-              <div class="gauge-fill" id="toxicityFill" style="background: #ef4444;"></div>
-            </div>
-          </div>
-
-          <div class="metric-gauge">
-            <div class="gauge-header">
-              <span>Эмоционалды Тұрақтылық</span>
-              <span id="stabilityVal" style="color: var(--accent-cyan);">0%</span>
-            </div>
-            <div class="gauge-track">
-              <div class="gauge-fill" id="stabilityFill" style="background: var(--accent-cyan);"></div>
-            </div>
-          </div>
-        </div>
-
+    <div class="gauge-card">
+      <div class="gauge-header">
+        <span>Лидерлік Деңгейі</span>
+        <span id="leadershipVal">0%</span>
+      </div>
+      <div class="gauge-bar">
+        <div class="gauge-fill" id="leadershipFill"></div>
       </div>
     </div>
-  </section>
 
-  <!-- ==========================================================================
-       6. ENTERPRISE JAVASCRIPT LOGIC ENGINE
-       ========================================================================== -->
+    <div class="gauge-card">
+      <div class="gauge-header">
+        <span>Манипуляция Қаупі</span>
+        <span id="toxicityVal">0%</span>
+      </div>
+      <div class="gauge-bar">
+        <div class="gauge-fill" id="toxicityFill" style="background: linear-gradient(135deg, #f43f5e, #e11d48);"></div>
+      </div>
+    </div>
+
+    <div class="gauge-card">
+      <div class="gauge-header">
+        <span>Эмоционалды Тұрақтылық</span>
+        <span id="stabilityVal">0%</span>
+      </div>
+      <div class="gauge-bar">
+        <div class="gauge-fill" id="stabilityFill" style="background: linear-gradient(135deg, #10b981, #059669);"></div>
+      </div>
+    </div>
+
+    <button class="action-btn" style="margin-top: auto;" onclick="exportReport()">
+      <i class="fa-solid fa-file-export"></i> Есепті Жүктеп Алу
+    </button>
+  </aside>
+
+  <div class="toast-container" id="toastContainer"></div>
+
   <script>
-    /* API KEY ENGINE */
-    const _k1 = "gsk_HpzBC6ipJk0Vmui7l7fO";
-    const _k2 = "WGdyb3FYEkdq4KlWuvzkj4oR9h9QIWRG";
-    const GROQ_API_KEY = _k1 + _k2;
+    /* SYSTEM PROMPT & BASE CONFIG */
+    const BASE_SYSTEM_PROMPT = `Сіз - Sabina AI, жоғары деңгейлі психолог, эмоционалды интеллект саласындағы эксперт және стратегиялық менторсыз. 
+Сіздің міндетіңіз: Пайдаланушының мәселесін аналитикалық түрде талдау, эмоционалды манипуляцияларды табу, ішкі шекараларды сақтау бойынша нақты кеңес беру.
 
-    /* SYSTEM PROMPT DEFINITIONS */
-    const BASE_SYSTEM_PROMPT = `
-    Сен "Sabina AI Enterprise" — Эмоционалды интеллект, психологиялық менторлық және абыройлы ер азаматтық лидерлік бойынша сарапшы нейрожүйесің.
+СІЗДІҢ ЖАУАБЫҢЫЗДЫҢ МІНДЕТТІ БӨЛІГІ:
+Жауап соңында МІНДЕТТІ ТҮРДЕ мына сияқты психологиялық метрикаларды квадраттық жақшада көрсетіңіз:
+[ЛИДЕРЛІК ДЕҢГЕЙІ: 75%]
+[МАНИПУЛЯЦИЯ ҚАУПІ: 20%]
+[ЭМОЦИОНАЛДЫ ТҰРАҚТЫЛЫҚ: 80%]`;
 
-    МАҢЫЗДЫ ЕРЕЖЕ:
-    - Егер пайдаланушы жай сәлемдесу сөздерін жазса (мысалы: "сәлем", "қалайсың"): ЕШҚАНДАЙ диагноз қойма! Тек сәлемдесіп, нақты талдау жасау үшін қыздың хабарламасын немесе контексті жазуды сұра.
-    - Егер толық диалог болса, ДӘЛ МЫНА КҰРЫЛЫММЕН ЖАУАП БЕР:
-
-    ### 📊 1. СИТУАЦИЯЛЫҚ БАҒАЛАУ & ПСИХОТИП
-    - **Диалог сапасы:** [1-10]
-    - **Психотип:** (Ашық, Тұйық, Эмоционалды, Салқын, Манипулятор)
-    - **Жасырын субтекст:** (Сөздің астарында не жатыр?)
-
-    ### 🚨 2. 🚩 «ҚЫЗЫЛ ЖАЛАУШАЛАР» ТЕСТІ
-    ### 📈 3. МЕТРИКАЛАР (СӘЙКЕС ПАЙЫЗБЕН ЖАЗ):
-    - ЛИДЕРЛІК ДЕҢГЕЙІ: [X%]
-    - МАНИПУЛЯЦИЯ ҚАУПІ: [X%]
-    - ЭМОЦИОНАЛДЫ ТҰРАҚТЫЛЫҚ: [X%]
-
-    ### 🎯 4. ҚАДАМДЫҚ ӘРЕКЕТ ЖОСПАРЫ
-    ### 💬 5. 3 ТҮРЛІ ТІРІ СЦЕНАРИЙ (Тікелей, Еркін, Шекара қою)
-    `;
-
-    /* STATE MANAGEMENT */
     let sessions = [];
-    let currentSessionId = null;
-    let selectedStyle = 'supportive';
+    let activeSessionId = null;
+    let selectedStyle = 'empathic';
     let isRecording = false;
     let audioAnimId = null;
+    let radarChartInstance = null;
 
-    /* RADAR CHART CANVAS ENGINE (Vanilla JS Spider Chart) */
-    class RadarChart {
+    /* CUSTOM RADAR CHART ENGINE (NO EXTERNAL DEPENDENCIES) */
+    class CustomRadarChart {
       constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
-        this.labels = ['Эмпатия', 'Лидерлік', 'Шекара', 'Сабыр', 'Талдау'];
-        this.values = [60, 50, 70, 80, 65];
-        this.init();
+        this.labels = ['Эмоция', 'Лидерлік', 'Шекара', 'Тұрақтылық', 'Эмпатия'];
+        this.values = [50, 50, 50, 50, 50];
       }
 
-      init() {
-        this.canvas.width = 240;
-        this.canvas.height = 240;
-        this.draw();
-      }
-
-      updateValues(newVals) {
-        this.values = newVals;
+      updateValues(newValues) {
+        this.values = newValues;
         this.draw();
       }
 
       draw() {
         const ctx = this.ctx;
-        const w = this.canvas.width;
-        const h = this.canvas.height;
-        const center = w / 2;
-        const radius = 80;
+        const width = this.canvas.width;
+        const height = this.canvas.height;
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const radius = Math.min(width, height) / 2 - 30;
 
-        ctx.clearRect(0, 0, w, h);
+        ctx.clearRect(0, 0, width, height);
 
-        // Draw spider web grids
+        // Draw web rings
+        const numRings = 4;
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
         ctx.lineWidth = 1;
-        for (let level = 1; level <= 4; level++) {
-          const r = (radius / 4) * level;
+
+        for (let r = 1; r <= numRings; r++) {
           ctx.beginPath();
+          const currentRadius = (radius / numRings) * r;
           for (let i = 0; i < 5; i++) {
             const angle = (Math.PI * 2 / 5) * i - Math.PI / 2;
-            const x = center + r * Math.cos(angle);
-            const y = center + r * Math.sin(angle);
+            const x = centerX + currentRadius * Math.cos(angle);
+            const y = centerY + currentRadius * Math.sin(angle);
             if (i === 0) ctx.moveTo(x, y);
             else ctx.lineTo(x, y);
           }
@@ -865,33 +558,35 @@
           ctx.stroke();
         }
 
-        // Draw Axis lines & Labels
-        ctx.fillStyle = '#64748b';
+        // Draw Axes & Labels
+        ctx.fillStyle = '#9ca3af';
         ctx.font = '10px Plus Jakarta Sans';
         ctx.textAlign = 'center';
 
         for (let i = 0; i < 5; i++) {
           const angle = (Math.PI * 2 / 5) * i - Math.PI / 2;
-          const x = center + radius * Math.cos(angle);
-          const y = center + radius * Math.sin(angle);
+          const x = centerX + radius * Math.cos(angle);
+          const y = centerY + radius * Math.sin(angle);
 
           ctx.beginPath();
-          ctx.moveTo(center, center);
+          ctx.moveTo(centerX, centerY);
           ctx.lineTo(x, y);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
           ctx.stroke();
 
-          const lx = center + (radius + 18) * Math.cos(angle);
-          const ly = center + (radius + 18) * Math.sin(angle);
-          ctx.fillText(this.labels[i], lx, ly + 4);
+          // Labels
+          const labelX = centerX + (radius + 18) * Math.cos(angle);
+          const labelY = centerY + (radius + 18) * Math.sin(angle) + 3;
+          ctx.fillText(this.labels[i], labelX, labelY);
         }
 
-        // Draw Data Polygon
+        // Draw Data Shape
         ctx.beginPath();
         for (let i = 0; i < 5; i++) {
           const angle = (Math.PI * 2 / 5) * i - Math.PI / 2;
-          const r = (radius * (this.values[i] / 100));
-          const x = center + r * Math.cos(angle);
-          const y = center + r * Math.sin(angle);
+          const valRadius = (radius * (this.values[i] / 100));
+          const x = centerX + valRadius * Math.cos(angle);
+          const y = centerY + valRadius * Math.sin(angle);
           if (i === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
@@ -905,11 +600,10 @@
       }
     }
 
-    let radarChartInstance = null;
-
-    /* INITIALIZATION ON DOM LOAD */
-    window.addEventListener('DOMContentLoaded', () => {
-      radarChartInstance = new RadarChart('radarCanvas');
+    /* INITIALIZATION */
+    window.onload = function() {
+      radarChartInstance = new CustomRadarChart('radarCanvas');
+      radarChartInstance.draw();
       loadFromLocalStorage();
 
       if (sessions.length === 0) {
@@ -917,209 +611,176 @@
       } else {
         switchSession(sessions[0].id);
       }
-    });
+    };
 
-    /* SESSION MANAGEMENT ENGINE */
+    /* SESSION MANAGEMENT */
     function createNewSession() {
+      const id = 'session_' + Date.now();
       const newSession = {
-        id: 'session-' + Date.now(),
-        title: 'Жаңа талдау #' + (sessions.length + 1),
-        history: [{ role: 'system', content: BASE_SYSTEM_PROMPT }],
-        messages: [{
-          sender: 'assistant',
-          text: 'Сәлем! Мен **Sabina AI Enterprise** — сіздің эмоционалды интеллект және лидерлік менторыңызбын. Талдау жасау үшін диалогты енгізіңіз.',
-          time: getCurrentTime()
-        }]
+        id: id,
+        title: 'Жаңа Сессия ' + (sessions.length + 1),
+        history: [
+          { role: 'system', content: BASE_SYSTEM_PROMPT }
+        ],
+        messages: [
+          {
+            sender: 'assistant',
+            text: 'Сәлеметсіз бе! Мен Sabina AI психологиялық платформасымын. Сұрағыңызды немесе басыңыздан өтіп жатқан ситуацияны жазыңыз, біз оны психометриялық деңгейде талдаймыз.',
+            time: getCurrentTime()
+          }
+        ]
       };
 
       sessions.unshift(newSession);
-      currentSessionId = newSession.id;
+      activeSessionId = id;
       saveToLocalStorage();
-      renderSessionsList();
-      renderCurrentMessages();
-      showToast('Жаңа сессия басталды');
+      renderSidebar();
+      renderChatMessages();
+      showToast('Жаңа аналитикалық сессия ашылды');
     }
 
     function switchSession(id) {
-      currentSessionId = id;
-      renderSessionsList();
-      renderCurrentMessages();
+      activeSessionId = id;
+      renderSidebar();
+      renderChatMessages();
     }
 
-    function renderSessionsList() {
-      const container = document.getElementById('sessionList');
-      container.innerHTML = '';
+    function getCurrentSession() {
+      return sessions.find(s => s.id === activeSessionId);
+    }
+
+    function renderSidebar() {
+      const listContainer = document.getElementById('sessionList');
+      listContainer.innerHTML = '';
 
       sessions.forEach(s => {
         const div = document.createElement('div');
-        div.className = `session-item ${s.id === currentSessionId ? 'active' : ''}`;
+        div.className = `session-item ${s.id === activeSessionId ? 'active' : ''}`;
         div.onclick = () => switchSession(s.id);
         div.innerHTML = `
-          <span><i class="fa-regular fa-comment-dots"></i> ${escapeHtml(s.title)}</span>
-          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--text-muted);"></i>
+          <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><i class="fa-regular fa-message" style="margin-right: 8px;"></i>${escapeHtml(s.title)}</span>
+          <i class="fa-solid fa-xmark" style="font-size: 0.8rem; opacity: 0.5;" onclick="deleteSession(event, '${s.id}')"></i>
         `;
-        container.appendChild(div);
+        listContainer.appendChild(div);
       });
     }
 
-    function renderCurrentMessages() {
-      const session = getCurrentSession();
-      const viewport = document.getElementById('chatViewport');
-      viewport.innerHTML = '';
+    function deleteSession(e, id) {
+      e.stopPropagation();
+      sessions = sessions.filter(s => s.id !== id);
+      if (sessions.length === 0) {
+        createNewSession();
+      } else {
+        if (activeSessionId === id) activeSessionId = sessions[0].id;
+        saveToLocalStorage();
+        renderSidebar();
+        renderChatMessages();
+      }
+    }
 
+    /* CHAT RENDER ENGINE */
+    function renderChatMessages() {
+      const viewport = document.getElementById('chatViewport');
+      const session = getCurrentSession();
       if (!session) return;
 
-      session.messages.forEach(m => {
-        const msgRow = document.createElement('div');
-        msgRow.className = `message-row ${m.sender}`;
-        const parsedText = m.sender === 'assistant' ? marked.parse(m.text) : escapeHtml(m.text);
+      document.getElementById('chatTitle').innerText = session.title;
+      viewport.innerHTML = '';
 
-        msgRow.innerHTML = `
-          <div class="message-bubble">${parsedText}</div>
-          <span class="message-timestamp">${m.time}</span>
+      session.messages.forEach(m => {
+        const div = document.createElement('div');
+        div.className = `message-row ${m.sender}`;
+        div.innerHTML = `
+          <div class="avatar ${m.sender}">
+            <i class="fa-solid ${m.sender === 'user' ? 'fa-user' : 'fa-robot'}"></i>
+          </div>
+          <div class="message-bubble">
+            <div>${escapeHtml(m.text).replace(/\n/g, '<br>')}</div>
+            <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 5px; text-align: right;">${m.time}</div>
+          </div>
         `;
-        viewport.appendChild(msgRow);
+        viewport.appendChild(div);
       });
 
       viewport.scrollTop = viewport.scrollHeight;
     }
 
-    function getCurrentSession() {
-      return sessions.find(s => s.id === currentSessionId);
-    }
-
-    /* API CHAT SUBMISSION ENGINE */
+    /* API REQUEST & CHAT LOGIC */
     async function submitMessage() {
       const input = document.getElementById('chatInput');
       const text = input.value.trim();
       if (!text) return;
 
-      input.value = '';
       const session = getCurrentSession();
+      if (!session) return;
 
-      // Push User Message
-      const userTime = getCurrentTime();
-      session.messages.push({ sender: 'user', text: text, time: userTime });
-      session.history.push({ role: 'user', content: text });
-
-      // Update Session Title if first message
-      if (session.messages.length === 2) {
+      // Update session title if first user message
+      if (session.messages.length <= 1) {
         session.title = text.substring(0, 20) + '...';
-        renderSessionsList();
+        renderSidebar();
       }
 
-      renderCurrentMessages();
-      saveToLocalStorage();
+      // Add user message
+      const userMsg = { sender: 'user', text: text, time: getCurrentTime() };
+      session.messages.push(userMsg);
+      session.history.push({ role: 'user', content: text });
 
-      // Typing Placeholder
+      input.value = '';
+      renderChatMessages();
+
       const typingId = showTypingIndicator();
 
       try {
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        const response = await fetch('https://text.pollinations.ai/', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${GROQ_API_KEY}`
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            model: 'llama-3.3-70b-versatile',
             messages: session.history,
-            temperature: 0.6
+            model: 'openai'
           })
         });
 
-        const data = await response.json();
         removeTypingIndicator(typingId);
 
-        if (data.choices && data.choices[0]) {
-          const aiText = data.choices[0].message.content;
-          session.messages.push({ sender: 'assistant', text: aiText, time: getCurrentTime() });
-          session.history.push({ role: 'assistant', content: aiText });
+        if (response.ok) {
+          const aiResponseText = await response.text();
 
-          renderCurrentMessages();
-          parseAndAnimateMetrics(aiText);
+          const assistantMsg = { sender: 'assistant', text: aiResponseText, time: getCurrentTime() };
+          session.messages.push(assistantMsg);
+          session.history.push({ role: 'assistant', content: aiResponseText });
+
+          renderChatMessages();
+          parseAndAnimateMetrics(aiResponseText);
           saveToLocalStorage();
+        } else {
+          showToast('АПИ Қателігі: Жауап алу мүмкін болмады');
         }
       } catch (err) {
         removeTypingIndicator(typingId);
-        showToast('Сервермен байланыс үзілді!', 'error');
+        showToast('Желілік қателік орын алды');
+        console.error(err);
       }
     }
 
     function handleKeyPress(e) {
-      if (e.key === 'Enter') submitMessage();
-    }
-
-    /* METRIC PARSER & ANIMATIONS */
-    function parseAndAnimateMetrics(text) {
-      const leadMatch = text.match(/ЛИДЕРЛІК ДЕҢГЕЙІ:\s*\[?(\d+)%\]?/i);
-      const toxMatch = text.match(/МАНИПУЛЯЦИЯ ҚАУПІ:\s*\[?(\d+)%\]?/i);
-      const stabMatch = text.match(/ЭМОЦИОНАЛДЫ ТҰРАҚТЫЛЫҚ:\s*\[?(\d+)%\]?/i);
-
-      const leadVal = leadMatch ? parseInt(leadMatch[1]) : 65;
-      const toxVal = toxMatch ? parseInt(toxMatch[1]) : 25;
-      const stabVal = stabMatch ? parseInt(stabMatch[1]) : 80;
-
-      document.getElementById('leadershipVal').innerText = leadVal + '%';
-      document.getElementById('leadershipFill').style.width = leadVal + '%';
-
-      document.getElementById('toxicityVal').innerText = toxVal + '%';
-      document.getElementById('toxicityFill').style.width = toxVal + '%';
-
-      document.getElementById('stabilityVal').innerText = stabVal + '%';
-      document.getElementById('stabilityFill').style.width = stabVal + '%';
-
-      // Update Radar Canvas
-      if (radarChartInstance) {
-        radarChartInstance.updateValues([leadVal, toxVal, 100 - toxVal, stabVal, (leadVal + stabVal) / 2]);
-      }
-    }
-
-    /* AUDIO WAVEFORM CANVAS ANIMATION */
-    function toggleAudioRecorder() {
-      const box = document.getElementById('audioVisualizerBox');
-      const canvas = document.getElementById('audioCanvas');
-      const ctx = canvas.getContext('2d');
-
-      isRecording = !isRecording;
-
-      if (isRecording) {
-        box.style.display = 'flex';
-        canvas.width = canvas.offsetWidth;
-        canvas.height = 40;
-        showToast('Дауысты жазу іске қосылды...');
-
-        let step = 0;
-        function animateWave() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = '#ec4899';
-          for (let x = 0; x < canvas.width; x += 6) {
-            const h = Math.sin(step + x * 0.05) * 12 + 15;
-            ctx.fillRect(x, (canvas.height - h) / 2, 3, h);
-          }
-          step += 0.1;
-          audioAnimId = requestAnimationFrame(animateWave);
-        }
-        animateWave();
-      } else {
-        box.style.display = 'none';
-        cancelAnimationFrame(audioAnimId);
-        showToast('Дауыстық хабарлама өңделді!');
-        document.getElementById('chatInput').value = "Ол: «Кейін сөйлесейікші, қазір көңіл-күйім жоқ» деп айтты.";
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
         submitMessage();
       }
     }
 
-    /* UTILITY HELPERS */
+    /* TYPING INDICATOR */
     function showTypingIndicator() {
       const viewport = document.getElementById('chatViewport');
       const id = 'typing-' + Date.now();
       const div = document.createElement('div');
-      div.className = 'message-row assistant';
       div.id = id;
+      div.className = 'message-row assistant';
       div.innerHTML = `
-        <div class="message-bubble" style="color: var(--text-muted);">
-          <i class="fa-solid fa-circle-notch fa-spin"></i> Sabina AI сараптама жасап жатыр...
+        <div class="avatar assistant"><i class="fa-solid fa-robot"></i></div>
+        <div class="message-bubble" style="display: flex; gap: 8px; align-items: center;">
+          <i class="fa-solid fa-circle-notch fa-spin" style="color: var(--accent-primary);"></i>
+          <span style="font-size: 0.88rem; color: var(--text-muted);">Sabina AI талдап жатыр...</span>
         </div>
       `;
       viewport.appendChild(div);
@@ -1132,68 +793,205 @@
       if (el) el.remove();
     }
 
-    function getCurrentTime() {
-      const d = new Date();
-      return d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+    /* METRICS PARSER & GAUGE ANIMATOR */
+    function parseAndAnimateMetrics(text) {
+      const leadMatch = text.match(/ЛИДЕРЛІК ДЕҢГЕЙІ:\s*\[?(\d+)%?\]?/i);
+      const toxMatch = text.match(/МАНИПУЛЯЦИЯ ҚАУПІ:\s*\[?(\d+)%?\]?/i);
+      const stabMatch = text.match(/ЭМОЦИОНАЛДЫ ТҰРАҚТЫЛЫҚ:\s*\[?(\d+)%?\]?/i);
+
+      const lead = leadMatch ? parseInt(leadMatch[1]) : Math.floor(Math.random() * 30) + 60;
+      const tox = toxMatch ? parseInt(toxMatch[1]) : Math.floor(Math.random() * 40) + 10;
+      const stab = stabMatch ? parseInt(stabMatch[1]) : Math.floor(Math.random() * 30) + 65;
+
+      updateGauge('leadershipFill', 'leadershipVal', lead);
+      updateGauge('toxicityFill', 'toxicityVal', tox);
+      updateGauge('stabilityFill', 'stabilityVal', stab);
+
+      if (radarChartInstance) {
+        radarChartInstance.updateValues([
+          Math.min(100, stab + 10),
+          lead,
+          Math.min(100, 100 - tox),
+          stab,
+          Math.min(100, Math.round((lead + stab) / 2))
+        ]);
+      }
     }
 
-    function showToast(msg) {
-      const container = document.getElementById('toastContainer');
-      const toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: var(--accent-emerald);"></i> <span>${msg}</span>`;
-      container.appendChild(toast);
-      setTimeout(() => toast.remove(), 3000);
+    function updateGauge(fillId, valId, targetVal) {
+      const fillEl = document.getElementById(fillId);
+      const valEl = document.getElementById(valId);
+      if (!fillEl || !valEl) return;
+
+      fillEl.style.width = targetVal + '%';
+      valEl.innerText = targetVal + '%';
     }
 
-    function triggerDemoScenario() {
-      document.getElementById('chatInput').value = "Ол маған: «Сен маған мүлдем көңіл бөлмейсің, басқа жігіттер сияқты емессің» деді.";
-      submitMessage();
-      document.getElementById('platform').scrollIntoView({ behavior: 'smooth' });
-    }
+    /* MENTOR STYLE CONFIG */
+    function updateSystemPromptStyle(style) {
+      selectedStyle = style;
+      
+      document.querySelectorAll('.style-chip').forEach(chip => {
+        chip.classList.remove('active');
+      });
+      event.target.classList.add('active');
 
-    function exportReport() {
       const session = getCurrentSession();
       if (!session) return;
 
-      let content = `SABINA AI ENTERPRISE REPORT\nDate: ${new Date().toLocaleDateString()}\nSession: ${session.title}\n\n`;
+      let stylePrefix = "";
+      if (style === 'analytical') {
+        stylePrefix = "\nҮН ДИЗАЙНЫ: Қатал, фактіге сүйенген, эмоционалды импульстарға жол бермейтін аналитикалық тон.";
+      } else if (style === 'leader') {
+        stylePrefix = "\nҮН ДИЗАЙНЫ: Абыройлы, ер мінезді, нақты лидерлік позицияны және ішкі шекараларды ұстануды талап ететін тон.";
+      } else {
+        stylePrefix = "\nҮН ДИЗАЙНЫ: Қолдаушы, эмпатиялық, психологиялық жайлылық сыйлайтын тон.";
+      }
+
+      session.history[0] = { role: 'system', content: BASE_SYSTEM_PROMPT + stylePrefix };
+      showToast('Ментор стилі жаңартылды: ' + style);
+    }
+
+    /* VOICE / AUDIO VISUALIZER MOCK ENGINE */
+    function toggleAudioRecorder() {
+      const micBtn = document.getElementById('micBtn');
+      const box = document.getElementById('audioVisualizerBox');
+      const canvas = document.getElementById('audioCanvas');
+
+      if (!isRecording) {
+        isRecording = true;
+        micBtn.style.color = 'var(--accent-primary)';
+        box.style.display = 'flex';
+        startWaveAnimation(canvas);
+        showToast('Дауыстық жазба іске қосылды');
+      } else {
+        isRecording = false;
+        micBtn.style.color = '';
+        box.style.display = 'none';
+        cancelAnimationFrame(audioAnimId);
+        document.getElementById('chatInput').value = "Қазіргі қарым-қатынастағы эмоционалды салқындықты қалай еңсеруге болады?";
+        showToast('Дауыс мәтінге айналдырылды');
+      }
+    }
+
+    function startWaveAnimation(canvas) {
+      const ctx = canvas.getContext('2d');
+      let step = 0;
+
+      function render() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.beginPath();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#ec4899';
+
+        const width = canvas.width;
+        const height = canvas.height;
+        ctx.moveTo(0, height / 2);
+
+        for (let i = 0; i < width; i++) {
+          const y = Math.sin(i * 0.05 + step) * 12 * Math.sin(i * 0.01) + height / 2;
+          ctx.lineTo(i, y);
+        }
+
+        ctx.stroke();
+        step += 0.15;
+        audioAnimId = requestAnimationFrame(render);
+      }
+
+      render();
+    }
+
+    /* DEMO SCENARIO TRIGGER */
+    function triggerDemoScenario() {
+      const input = document.getElementById('chatInput');
+      input.value = "Қыз бала: 'Егер мені шынымен жақсы көрсең, бүгін достарыңмен кездесуге бармайсың.' Осы сөзге қалай сабырлы әрі шекараны сақтай отырып жауап берсем болады?";
+      submitMessage();
+    }
+
+    /* REPORT EXPORT */
+    function exportReport() {
+      const session = getCurrentSession();
+      if (!session || session.messages.length <= 1) {
+        showToast('Экспорттау үшін алдымен диалог жүргізіңіз');
+        return;
+      }
+
+      let reportText = `SABINA AI ENTERPRISE — ПСИХОЛОГИЯЛЫҚ ТАЛДАУ ЕСЕБІ\n`;
+      reportText += `Күні: ${new Date().toLocaleDateString()}\n`;
+      reportText += `==================================================\n\n`;
+
       session.messages.forEach(m => {
-        content += `[${m.time}] ${m.sender.toUpperCase()}:\n${m.text}\n\n------------------------\n`;
+        reportText += `[${m.time}] ${m.sender.toUpperCase()}:\n${m.text}\n\n--------------------------------------------------\n`;
       });
 
-      const blob = new Blob([content], { type: 'text/plain' });
+      const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
+      a.href = url;
       a.download = `Sabina_AI_Report_${Date.now()}.txt`;
       a.click();
-      showToast('Есеп сәтті жүктелді!');
+      URL.revokeObjectURL(url);
+      showToast('Есеп жүктелді');
     }
 
-    function updateSystemPromptStyle(val) {
-      selectedStyle = val;
-      showToast(`Ментор стилі: ${val.toUpperCase()} етіп ауыстырылды`);
-    }
-
+    /* STORAGE & UTILS */
     function saveToLocalStorage() {
       localStorage.setItem('sabina_ai_sessions', JSON.stringify(sessions));
     }
 
     function loadFromLocalStorage() {
-      const saved = localStorage.getItem('sabina_ai_sessions');
-      if (saved) {
-        try { sessions = JSON.parse(saved); } catch(e) { sessions = []; }
+      const stored = localStorage.getItem('sabina_ai_sessions');
+      if (stored) {
+        try {
+          sessions = JSON.parse(stored);
+        } catch (e) {
+          sessions = [];
+        }
       }
     }
 
     function clearAllData() {
-      localStorage.removeItem('sabina_ai_sessions');
-      sessions = [];
-      createNewSession();
-      showToast('Барлық жад тазаланды');
+      if (confirm('Барлық сессиялар тарихын өшіруді растайсыз ба?')) {
+        localStorage.removeItem('sabina_ai_sessions');
+        sessions = [];
+        createNewSession();
+        showToast('Барлық жад тазаланды');
+      }
+    }
+
+    function getCurrentTime() {
+      const now = new Date();
+      return now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
     }
 
     function escapeHtml(str) {
-      return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      return str.replace(/[&<>"']/g, function (m) {
+        return {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#039;'
+        }[m];
+      });
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `<i class="fa-solid fa-circle-info" style="color: var(--accent-primary);"></i> <span>${escapeHtml(message)}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
     }
   </script>
 </body>
